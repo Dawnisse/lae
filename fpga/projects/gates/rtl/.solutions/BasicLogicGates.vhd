@@ -2,20 +2,22 @@
 library IEEE ;
 use IEEE.std_logic_1164.all ;
 
-entity BasicLogicGates is :
+entity BasicLogicGates is
 
    port (
-      A : in  std_logic,
-      B : in  std_logic,
+      A : in  std_logic ;
+      B : in  std_logic ;
       Z : out std_logic_vector(5 downto 0)
    ) ;
 
 end entity BasicLogicGates ;
 
 
-architecture rtl of BasicLogicGates is :
+architecture rtl of BasicLogicGates is
 
 begin
+
+   -- Available VHDL logical operators are: not, and, or, nand, nor, xor, xnor
 
    -- 2-inputs AND gate
    Z(0) <= A and B ;

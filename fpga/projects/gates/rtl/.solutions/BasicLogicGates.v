@@ -3,11 +3,19 @@
 
 module BasicLogicGates (
 
-   input  wire A,
+   input  wire A,         // Verilog-2001 port declaration, more compact
    input  wire B,
-   output wire [5:0] Z
+   output wire [5:0] Z    // note that Z is a 6-bit width output BUS
 
    ) ;
+
+   // Available Verilog logical operators are:
+   //
+   // NOT ~
+   // AND &
+   // OR  |
+   // XOR ^
+
 
    // 2-inputs AND gate
    assign Z[0] = A & B ;
