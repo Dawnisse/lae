@@ -1,0 +1,12 @@
+# sample ~/.bashrc
+
+echo "Loading $HOME/.bashrc"
+
+
+# variable to locate the main Xilinx Vivado installation directory
+export VIVADO_DIR=/opt/Xilinx
+
+
+# add Vivado executables to search path
+source $VIVADO_DIR/Vivado/2019.2/settings64.sh
+

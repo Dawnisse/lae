@@ -1,4 +1,4 @@
-# Advanced Electronics Laboratory (MFN1324) - University of Torino
+# Advanced Electronics Laboratory (MFN1324) <br/> University of Torino
 
 Git repository for the Advanced Electronics Laboratory course (MFN1324) at University of Torino, Physics Department
 
@@ -95,7 +95,7 @@ For setting up the proper command-line runtime environment, refer to section [**
 [**[Contents]**](#contents)
 
 Sample scripts `sample/bashrc` and `sample/cshrc` for Linux, as well `sample/login.bat` for Windows are provided to support 
-both `csh/tcsh` and `sh/bash/zsh` Linux shells and the Windows Command Prompti and to help students to setup the proper UNIX/Windows
+both `csh/tcsh` and `sh/bash/zsh` Linux shells and the Windows Command Prompt and to help students to setup the proper UNIX/Windows
 runtime environment.
 
 

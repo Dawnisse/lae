@@ -1,0 +1,12 @@
+# sample ~/.cshrc
+
+echo "Loading $HOME/.cshrc"
+
+
+# variable to locate the main Xilinx Vivado installation directory
+setenv  VIVADO_DIR /opt/Xilinx
+
+
+# add Vivado executables to search path
+source $VIVADO DIR/Vivado/2019.2/settings64.sh
+
