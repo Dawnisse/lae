@@ -110,6 +110,9 @@ A more complete guide to the basic `git` commands can be found [**here**](http:/
 # Webex lectures
 [**[Contents]**](#contents)
 
-* [Lecture 1 - Course introduction](https://unito.webex.com/unito/j.php?MTID=m43898a5fdd9844dbfb3abc4dcf49b780)
-* [Lecture 2 - TODO]
+* Lecture 1</br>
+[Webek link](https://unito.webex.com/unito/j.php?MTID=m43898a5fdd9844dbfb3abc4dcf49b780)</br>
+[Record link](https://unito.webex.com/recordingservice/sites/unito/recording/bf7ac1a2dc3d43dba524390112ee13db)
+
+* Lecture 2 - TODO
 
