@@ -26,7 +26,6 @@ clean :
 	@rm -rf *.dir .Xil
 
 
-
 ## command line help 
 help :
 
@@ -40,4 +39,3 @@ help :
 	@echo " - make sim       Run simulation"
 	@echo " - make clean     Delete all log files and temporary files"
 	@echo ""
-
