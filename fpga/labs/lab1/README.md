@@ -1,6 +1,6 @@
 # Lab 1 Instructions
 
-In this first lab we will implement **a simple inverter** using Verilog and simulate the code using the **Xilinx Xsim simulator**.
+In this first lab we will implement **a simple inverter** using Verilog and simulate the code using the **Xilinx XSim simulator**.
 
 As a first step, **open a terminal** and go inside the `lab1/` directory :
 
@@ -132,8 +132,16 @@ Finally, run the simulation with :
 run all
 ```
 
+All these commands can also be collected into a **Tcl script** e.g. `run.tcl` and loaded from the Tcl console.
 
-Explore the graphical interface of the simulator. Exit.
+Type in the XSim console :
+
+```
+restart
+source run.tcl
+``` 
+
+Explore the graphical interface of the simulator. Close the simulatin when you are happy.
 
 The simulation flow automatically creates a lot of garbage files :
 
