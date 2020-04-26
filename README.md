@@ -8,6 +8,7 @@ Git repository for the Advanced Electronics Laboratory course (MFN1324) at Unive
 * [**Git configuration**](#git-configuration)
 * [**Repository download**](#repository-download)
 * [**UNIX environment setup**](#environment-setup)
+* [**Sample simulation flow**](#sample-simulation-flow)
 * [**Basic git commands**](#basic-git-commands)
 * [**Webex lectures**](#webex-lectures)
 
@@ -97,6 +98,12 @@ For setting up the proper command-line runtime environment, refer to section [**
 Sample scripts `sample/bashrc` and `sample/cshrc` for Linux, as well `sample/login.bat` for Windows are provided to support 
 both `csh/tcsh` and `sh/bash/zsh` Linux shells and the Windows Command Prompt and to help students to setup the proper UNIX/Windows
 runtime environment.
+
+# Sample simulation flow
+[**[Contents]**](#contents)
+
+A small Verilog simulation example is provided to **test your environment setup** and **tools installation**.<br/>
+Step-by-step instruction explaining how to run this test flow can be found [**here**](test/README.md).
 
 
 # Basic git commands
