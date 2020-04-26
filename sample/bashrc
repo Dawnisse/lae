@@ -1,12 +1,14 @@
-# sample ~/.bashrc
-
+#
+# sample ~/.bashrc login script for Bash Linux shell
+#
 echo "Loading $HOME/.bashrc"
 
 
-# variable to locate the main Xilinx Vivado installation directory
-export VIVADO_DIR=/opt/Xilinx
+# variable to locate the main Xilinx Vivado installation directory, e.g. /opt/Xilinx
+export XILINX_DIR=/opt/Xilinx
 
 
-# add Vivado executables to search path
-source $VIVADO_DIR/Vivado/2019.2/settings64.sh
+# add Vivado executables to system search path
+source $XILINX_DIR/Vivado/<version>/settings64.sh
 
+# add here additional user customizations
