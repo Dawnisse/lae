@@ -16,6 +16,8 @@ log*
 ## temporary directory (optional)
 tmp/*
 temp/*
+
+## test directory content
 test/*
 
 ## all students stuffs (use git add -f to add .solutions/ instead)
