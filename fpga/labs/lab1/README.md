@@ -133,6 +133,27 @@ run all
 ```
 
 
+Explore the graphical interface of the simulator. Exit.
+
+The simulation flow automatically creates a lot of garbage files :
+
+```
+% ls -la
+```
+
+You can cleanup the working area using either
+
+```
+% source cleanup.sh   (for Linux users)
+```
+
+or
+
+```
+% call cleanup.bat    (for Windows users)
+```
+
+
 ## Exercise
 
 Edit the continuous assignment in order to **add 3 ns propagation delay** between input and output :
