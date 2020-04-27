@@ -22,7 +22,7 @@ sim : xsim.dir/work
 ## delete log files and temporary files
 clean :
 
-	@rm -f *.log *.jou *.wdb *.pb *.str
+	@rm -f *.log *.jou *.wdb *.pb
 	@rm -rf *.dir .Xil
 
 
