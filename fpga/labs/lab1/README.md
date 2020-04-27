@@ -1,4 +1,5 @@
-b 1 Instructions
+
+# Lab 1 Instructions
 
 In this first lab we will implement **a simple inverter** using Verilog and simulate the code using the **Xilinx XSim simulator**.
 
@@ -118,21 +119,7 @@ The `-debug all` option is **REQUIRED** to make all signals **accessible** from 
 graphical interface in form of **digital waveforms**. If you elaborate compiled sources without this option
 **you will NOT BE ABLE to probe signals** in the XSim graphical interface !
 
-<hr>
-
-**WARNING**
-
-The value to be passed as argument to `xelab` is the **NAME** of the top-level module,
-**NOT the corresponding Verilog source file** ! The following command-line syntax is therefore **WRONG** :
-
-```
-% xelab -debug all tb_Inverter.v
-```
-
-Do not call `xelab` targeting a `.v` file and **pay attention to TAB completion on files** !
-<hr>
-
-After this process a **simulation executable** is created and can be runned using the `xsim` simulator as
+After this process a **simulation executable** is created and can be run using the `xsim` simulator as
 follows :
 
 ```
@@ -143,14 +130,15 @@ follows :
 
 **WARNING**
 
-As for `xelab`, also for the `xsim` executable the value to be passed as main argument is the **NAME** of the top-level module,
-**NOT the corresponding Verilog source file** ! The following command-line syntax is therefore **WRONG** :
+The value to be passed as main argument to `xelab` and `xsim` executables is the **NAME** of the top-level module,
+**NOT the corresponding Verilog source file** ! The following command-line syntax are therefore **WRONG** :
 
 ```
+% xelab -debug all tb_Inverter.v
 % xsim -gui tb_Inverter.v
 ```
 
-Do not call `xsim` targeting a `.v` file and **pay attention to TAB completion on files** !
+Do not call `xelab` or `xsim` targeting a `.v` file and **always pay attention to TAB completion on files** !
 <hr>
 
 
@@ -215,8 +203,7 @@ ref. to :
 
 * [*Vivado Design Suite User Guide: Logic Simulation*](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_2/ug900-vivado-logic-simulation.pdf)
 
-* [*Vivado Design Suite Tutorial: Logic Simulation*]
-(https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_2/ug937-vivado-design-suite-simulation-tutorial.pdf)
+* [*Vivado Design Suite Tutorial: Logic Simulation*](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_2/ug937-vivado-design-suite-simulation-tutorial.pdf)
 
 
 
