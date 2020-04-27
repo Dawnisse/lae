@@ -1,4 +1,4 @@
-# Lab 1 Instructions
+b 1 Instructions
 
 In this first lab we will implement **a simple inverter** using Verilog and simulate the code using the **Xilinx XSim simulator**.
 
@@ -22,11 +22,11 @@ Windows users will use Notepad++ instead :
 % npp Inverter.v
 ```
 
-The source code is the following :
+The **source code** is the following :
 
 ```Verilog
 //
-// A simple inverter in Verilog
+// A simple inverter (NOT-gate) in Verilog
 //
 
 `timescale 1ns / 1ps   // specify time-unit and time-precision, this is only for simulation purposes
@@ -49,9 +49,11 @@ Once ready, try to **parse and compile** the above code using the `xvlog` Verilo
 % xvlog Inverter.v
 ```
 
-In case of syntax errors, fix the errors and re-compile the source file after saving changes.
+In case of **syntax errors**, fix the errors issued in the terminal and re-compile the source file
+after saving your changes.
 
-In order to **simulate** the block we also need a **testbench module** to create a test pattern for our inverter.
+In order to **simulate** the block we also need a **testbench module** to create a
+**test pattern** for our inverter.
 
 Create a second Verilog file named `tb_Inverter.v` as follows :
 
@@ -65,7 +67,7 @@ or
 % npp tb_Inverter.v
 ```
 
-The testbench code is the following :
+The **testbench code** is the following :
 
 ```verilog
 //
@@ -89,7 +91,7 @@ module tb_Inverter ;
       #200 X = 1'b1 ;
       #750 X = 1'b0 ;
       
-      #500 $finish ;     // this is a Verilog "task" 
+      #500 $finish ;     // stop the simulation (this is a Verilog "task")
    end
 
 endmodule
@@ -102,23 +104,56 @@ Parse and compile also the testbench code :
 
 In order to **simulate the testbench** we have at first to **merge toghether** the compiled code
 of our **module under test (MUT)** with the compiled code of the testbench.
-This process is called **elaboration** and in Xilinx Vivado is performed by the `xelab` executable.
+This process is called **elaboration** and in the Xilinx XSim simulation flow this is performed
+by the `xelab` executable.
 
-Elaboration is always done specifying the **top-level module** of the simulation project, which is 
+Elaboration is always done specifying the **NAME of the top-level module** of the simulation project, which is 
 the name of the **testbench module** :
 
 ```
 % xelab -debug all tb_Inverter
 ```
 
-The `-debug all` options is **required** to make all signals **accessible** from the simulator
-graphical interface in form of **digital waveforms**.
+The `-debug all` option is **REQUIRED** to make all signals **accessible** from the simulator
+graphical interface in form of **digital waveforms**. If you elaborate compiled sources without this option
+**you will NOT BE ABLE to probe signals** in the XSim graphical interface !
 
-After this process a **simulation executable** is created and can be runned using the `xsim` simulator :
+<hr>
+
+**WARNING**
+
+The value to be passed as argument to `xelab` is the **NAME** of the top-level module,
+**NOT the corresponding Verilog source file** ! The following command-line syntax is therefore **WRONG** :
+
+```
+% xelab -debug all tb_Inverter.v
+```
+
+Do not call `xelab` targeting a `.v` file and **pay attention to TAB completion on files** !
+<hr>
+
+After this process a **simulation executable** is created and can be runned using the `xsim` simulator as
+follows :
 
 ```
 % xsim -gui tb_Inverter
 ```
+
+<hr>
+
+**WARNING**
+
+As for `xelab`, also for the `xsim` executable the value to be passed as main argument is the **NAME** of the top-level module,
+**NOT the corresponding Verilog source file** ! The following command-line syntax is therefore **WRONG** :
+
+```
+% xsim -gui tb_Inverter.v
+```
+
+Do not call `xsim` targeting a `.v` file and **pay attention to TAB completion on files** !
+<hr>
+
+
 
 To add waveforms in the XSim **Wave Window** type in the **Tcl console** :
 
@@ -141,7 +176,7 @@ restart
 source run.tcl
 ``` 
 
-Explore the graphical interface of the simulator. Close the simulatin when you are happy.
+Explore the graphical interface of the XSim simulator. Close the simulator graphical interface when you are happy.
 
 The simulation flow automatically creates a lot of garbage files :
 
@@ -171,6 +206,18 @@ assign #3 ZN = !X ;
 ```
 
 Re-compile and re-simulate the code.
+
+
+## Further readings
+
+If you are interested in more in-depth details about the overall simulation flow in Xilinx XSim, please
+ref. to :
+
+* [*Vivado Design Suite User Guide: Logic Simulation*](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_2/ug900-vivado-logic-simulation.pdf)
+
+* [*Vivado Design Suite Tutorial: Logic Simulation*]
+(https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_2/ug937-vivado-design-suite-simulation-tutorial.pdf)
+
 
 
 ## Extra: comparison with VHDL code
@@ -217,4 +264,5 @@ Interested students can also try to simulate a **mixed-languge** design by compi
 % xelab -debug all tb_Inverter
 % xsim -gui tb_Inverter
 ``` 
+
 
