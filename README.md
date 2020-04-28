@@ -27,7 +27,7 @@ In case `git` is not installed on your machine, use
 or
 
 ```
-linux % sudo apt-get install git
+% sudo apt-get install git
 ```
 
 
@@ -118,11 +118,12 @@ A more complete guide to the basic `git` commands can be found [**here**](http:/
 [**[Contents]**](#contents)
 
 * Lecture 1<br/>
-[[**Webex link**]](https://unito.webex.com/unito/j.php?MTID=m43898a5fdd9844dbfb3abc4dcf49b780)<br/>
-[[**Record link**]](https://unito.webex.com/recordingservice/sites/unito/recording/bf7ac1a2dc3d43dba524390112ee13db)
+[**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=m43898a5fdd9844dbfb3abc4dcf49b780)<br/>
+[**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/bf7ac1a2dc3d43dba524390112ee13db)
 
 * Lecture 2<br/>
-[**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=m72f73fcda2b25e3710dfa22e3de0b1af)
+[**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=m72f73fcda2b25e3710dfa22e3de0b1af)<br/>
+[**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/5d89e415fb83422ca4400d35aecdc026)
 
 * Lecture 3 TODO
 
