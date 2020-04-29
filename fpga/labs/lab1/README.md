@@ -39,7 +39,7 @@ module Inverter (
 
 
    // continuous assignment
-   assign ZN = !X ;
+   assign ZN = !X ;                // **NOTE: you can also use ~X
 
 endmodule
 ```
@@ -79,19 +79,19 @@ The **testbench code** is the following :
 
 module tb_Inverter ;
 
-   reg X ;      // note that this is declared as 'reg' net type
-   wire ZN ;
+   reg in ;      // note that this is declared as 'reg' net type
+   wire out ;
 
-   // instantiate the module under test (MUT)
-   Inverter MUT ( .X(X), .ZN(ZN) ) ;
+   // instantiate the device under test (DUT)
+   Inverter DUT ( .X(in), .ZN(out) ) ;
 
    // stimulus
    initial begin
    
-      #500 X = 1'b0 ;
-      #200 X = 1'b1 ;
-      #750 X = 1'b0 ;
-      
+      #500 in = 1'b0 ;
+      #200 in = 1'b1 ;
+      #750 in = 1'b0 ;
+
       #500 $finish ;     // stop the simulation (this is a Verilog "task")
    end
 
