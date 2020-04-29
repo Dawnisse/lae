@@ -103,7 +103,7 @@ runtime environment.
 [**[Contents]**](#contents)
 
 A small Verilog simulation example is provided to **test your environment setup** and **tools installation**.<br/>
-Step-by-step instruction explaining how to run this test flow can be found [**here**](test/README.md).
+Step-by-step instruction explaining how to run this test flow can be found [**here**](fpga/test/README.md).
 
 
 # Basic git commands

@@ -3,7 +3,7 @@
 
 @echo off
 
-del /F /Q *.log *.jou *pb *.wdb > nul
+del /F /Q *.log *.jou *pb *.wdb
 
-rmdir /S /Q xsim.dir .Xil > nul
+rmdir /S /Q xsim.dir .Xil
 
