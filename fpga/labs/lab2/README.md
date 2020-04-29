@@ -222,6 +222,11 @@ compile :
 sim :
 	@xelab -debug all $(TOP)
 	@xsim -gui -tclbatch run.tcl $(TOP)
+
+## clean the working area
+clean :
+	@source clanup.sh   (for Linux users)
+	@call cleanup.bat   (for Windows users)
 ```
 
 <hr>
