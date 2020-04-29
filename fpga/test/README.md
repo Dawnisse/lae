@@ -7,7 +7,7 @@ To run the test flow, **open a terminal** and go inside the `test/` directory :
 
 
 ```
-% cd Desktop/lae/test
+% cd Desktop/lae/fpga/test
 ```
 
 List the content of the `test/` directory :

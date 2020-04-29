@@ -18,10 +18,10 @@ tmp/*
 temp/*
 
 ## test directory content
-test/*
+fpga/test/*
 
 ## all students stuffs (use git add -f to add .solutions/ instead)
 fpga/labs/*
-
+fpga/projects/*
 
 ## add here further directives if required ...
