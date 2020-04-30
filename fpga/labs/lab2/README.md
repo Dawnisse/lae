@@ -211,8 +211,16 @@ Write the following code :
 # A first simple Makefile example to automate the simulation flow
 #
 
+## list of Verilog sources to be compiled
 SOURCES := Gates.v tb_Gates.v
+
+## top-level module (testbench)
 TOP := tb_Gates
+
+## some useful Linux aliases
+RM := rm -f -v
+RMDIR := rm -rf -v
+
 
 ## compile Verilog sources
 compile :
@@ -225,8 +233,9 @@ sim :
 
 ## clean the working area
 clean :
-	@source clanup.sh   (for Linux users)
-	@call cleanup.bat   (for Windows users)
+	@$(RM) *.log *.jou *.pb *.wdb *.wcfg
+	@$(RMDIR) xsim.dir .Xil
+
 ```
 
 <hr>
