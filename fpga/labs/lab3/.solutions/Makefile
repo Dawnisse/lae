@@ -13,6 +13,8 @@ RM := rm -f -v
 RMDIR := rm -rf -v
 
 
+default : help
+
 ## compile Verilog sources
 compile :
 	@xvlog $(SOURCES)
@@ -27,3 +29,16 @@ clean :
 	@$(RM) *.log *.jou *.pb *.wdb *.wcfg
 	@$(RMDIR) xsim.dir .Xil
 
+## command line help 
+help :
+
+	@echo ""
+	@echo "Usage: make <target>"
+	@echo ""
+	@echo "Available targets:"
+	@echo ""
+	@echo " - make help      Command-line help"
+	@echo " - make compile   Parse and compile Verilog sources"
+	@echo " - make sim       Run simulation"
+	@echo " - make clean     Delete all log files and temporary files"
+	@echo ""
