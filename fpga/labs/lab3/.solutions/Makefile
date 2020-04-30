@@ -39,6 +39,6 @@ help :
 	@echo ""
 	@echo " - make help      Command-line help"
 	@echo " - make compile   Parse and compile Verilog sources"
-	@echo " - make sim       Run simulation"
+	@echo " - make sim       Elaborate the design and launch the simulation"
 	@echo " - make clean     Delete all log files and temporary files"
 	@echo ""
