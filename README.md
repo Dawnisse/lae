@@ -1,6 +1,7 @@
 # Advanced Electronics Laboratory (MFN1324) <br/> University of Torino
 
-Git repository for the Advanced Electronics Laboratory course (MFN1324) at University of Torino, Physics Department
+Git repository for the _Advanced Electronics Laboratory_ course (MFN1324) at University of Torino, Physics Department.<br/>
+Lecture slides and additional course material available on the [**main CampusNet course page**](https://fisica.campusnet.unito.it/do/lezioni.pl/Show?_id=70d4).
 
 
 # Contents
@@ -130,4 +131,7 @@ A more complete guide to the basic `git` commands can be found [**here**](http:/
 [**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/462fdafa9e2e45629207c88bdb16e141)
 
 
+* Lecture 4<br/>
+[**Webex link]**](https://unito.webex.com/unito/j.php?MTID=m313e97db933a759d6ef614e8ce86d2bd)<br/>
+[**[Record link]**] **TODO
 
