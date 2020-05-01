@@ -136,9 +136,59 @@ Try to **simulate all possible different implementations** and **verify the expe
 Use the `Makefile` to automate the simulation flow :
 
 ```
+% make clean
 % make compile
 % make sim
 ```
 
+
+## Exercise
+
+Try to re-implement the code of a simple **inverter** using either a **conditional assignment**
+
+```verilog
+assign ZN = (X == 1'b1) ? 1'b0 : 1'b1 ;
+```
+
+or an `if/else` statement within an `always` **procedural block**
+
+```verilog
+always @(*)
+   if (X == 1'b1)
+      Z = 1'b0 ;
+   else
+      Z = 1'b1 ;
+```
+
+Simulate the code to check the expected functionality of an inverter.
+
+
+## Exercise
+
+Create a new source file `MUX4.v`. Start from the code
+of a **2-inputs multiplexer** and try to implement a **4-inputs multiplexer** instead :
+
+
+```verilog
+module MUX4 (
+
+   input wire [3:0] D,      // 4 inputs
+   input wire [1:0] S,      // select BUS
+   output reg Z
+
+   ) ;
+
+
+   always @(*) begin
+
+      ...
+      ...
+
+   end
+
+endmodule
+```
+
+Write a suitable Verilog testbench `tb_MUX4.v` in order to verify the proper functionality of the new block.
 
 
