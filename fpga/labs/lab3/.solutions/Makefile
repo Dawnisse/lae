@@ -26,8 +26,8 @@ sim :
 
 ## clean the working area
 clean :
-	@$(RM) *.log *.jou *.pb *.wdb *.wcfg
 	@$(RMDIR) xsim.dir .Xil
+	@$(RM) *.log *.jou *.pb *.wdb
 
 ## command line help 
 help :
