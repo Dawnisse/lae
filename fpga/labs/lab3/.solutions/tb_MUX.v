@@ -18,16 +18,18 @@
 
 module tb_MUX ;
 
-   // 40 MHz clock generator
+   // clock generator
+   parameter real PERIOD = 50.0 ;       // 50 ns clock period declared as Verilog parameter
+
    reg clk = 1'b0 ;
 
-   always #12.5 clk = ~ clk ;
+   always #(PERIOD/2.0) clk = ~ clk ;   // force the toggle each PERIOD/2
 
    // 2-bits counter
    reg [1:0] count = 2'b00 ;
 
    always @(posedge clk)
-      count <= count + 1'b1 ;    // **WARN: be aware of the casting ! This is count[2:0] <= count[2:0] + 1'b1 !
+      count <= count + 1'b1 ;           // **WARN: be aware of the casting ! This is count[2:0] <= count[2:0] + 1'b1 !
 
    // device under test (DUT)
 
@@ -52,8 +54,8 @@ module tb_MUX ;
 
    // text-based simulation output
    initial begin
-      $display("\t\t\t\t time select A  B  Z") ;
-      $monitor("%d   %b     %b %b %b",$time, select, count[0], count[1], Z) ;
+      $display("\t\t\t\t   time   S   A   B   Z") ;
+      $monitor("%d ns   %b   %b   %b   %b",$time, select, count[0], count[1], Z) ;
    end
 
 

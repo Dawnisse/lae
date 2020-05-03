@@ -13,23 +13,29 @@ RM := rm -f -v
 RMDIR := rm -rf -v
 
 
+## by default call Makefile help
+.PHONY : default
 default : help
 
 ## compile Verilog sources
+.PHONY : compile
 compile :
-	@xvlog $(SOURCES)
+	@xvlog $(SOURCES) -log compile.log
 
 ## elaborate the design and invoke the simulator
+.PHONY : sim
 sim :
-	@xelab -debug all $(TOP)
-	@xsim -gui -tclbatch run.tcl $(TOP)
+	@xelab -debug all $(TOP) -log elaborate.log
+	@xsim -gui -tclbatch run.tcl $(TOP) -log simulate.log
 
 ## clean the working area
+.PHONY : clean
 clean :
 	@$(RMDIR) xsim.dir .Xil
 	@$(RM) *.log *.jou *.pb *.wdb
 
 ## command line help 
+.PHONY : help
 help :
 
 	@echo ""
