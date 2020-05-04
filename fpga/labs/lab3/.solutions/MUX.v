@@ -33,6 +33,8 @@ module MUX (
    //   behavioral description   //
    ////////////////////////////////
 
+   // using an if/else statement
+
    always @(A,B,S) begin          // **IMPORTANT: this is a COMBINATIONAL block, all signals contribute to the SENSITIVITY LIST
 
       if( S == 1'b0 ) begin       // **NOTE: the C-style equality operator checks if the condition is true or false
@@ -43,6 +45,26 @@ module MUX (
       end
    end  // always
 
+
+   // using a case statement
+
+   /*
+   always @(*) begin              // as recommended by the Verilog standard, use always @(*) to describe COMBINATIONAL blocks
+
+      case({S,A,B})
+
+         3'b000 : Z = 1'b0 ;  // A
+         3'b001 : Z = 1'b0 ;  // A
+         3'b010 : Z = 1'b1 ;  // A
+         3'b011 : Z = 1'b1 ;  // A
+         3'b100 : Z = 1'b0 ;  // B
+         3'b101 : Z = 1'b1 ;  // B
+         3'b110 : Z = 1'b0 ;  // B
+         3'b111 : Z = 1'b1 ;  // B
+
+      endcase
+   end  // always
+   */
 
    ////////////////////////////////
    //   conditional assignment   //
