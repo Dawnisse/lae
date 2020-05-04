@@ -26,11 +26,12 @@ set XILINX_DIR=C:\Xilinx
 call %XILINX_DIR%\Vivado\<version>\settings64.bat
 
 
-:: add WinBash executables to search path
-set PATH=C:\where\you\installed\WinBash\bin;%PATH%
+:: add GnuWin executables to search path
+set PATH=C:\where\you\installed\GnuWin\bin;%PATH%
 
 
 :: fix GnuWin mkdir executable (https://superuser.com/questions/1253369/gnuwin32-makefile-mkdir-p)
 alias mkdir="mkdir" $*
 
 :: add here additional user customizations
+
