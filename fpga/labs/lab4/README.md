@@ -65,7 +65,7 @@ module OneHotDecoder (
 
       for(i=0; i < 32; i=i+1) begin
 
-         Bout[i] = (Bin[4:0] == i) ;
+         Bout[i] = (Bin[4:0] == i) ;      // this is equivalent to (Bin[4:0] == i) ? 1'b1 : 1'b0 ;
 
       end  // for
    end  // always
