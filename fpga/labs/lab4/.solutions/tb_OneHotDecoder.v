@@ -23,13 +23,15 @@ module tb_OneHotDecoder ;
    //   clock generator   //
    /////////////////////////
 
-   parameter real PERIOD = 50.0 ;
+   parameter real PERIOD = 50.0 ;   // 50 ns clock period 
 
    reg clk ;
 
    initial begin
+
       clk = 1'b0 ;
-      forever #(PERIOD/2.0) clk = ~ clk ;
+
+      forever #(PERIOD/2.0) clk = ~ clk ;    // alternative implementation of a clock generator using 'forever'
    end
 
 
@@ -50,6 +52,7 @@ module tb_OneHotDecoder ;
    wire [31:0] code ;
 
    OneHotDecoder DUT (.Bin(count[4:0]), .Bout(code[31:0]) ) ;
+   //ThermometerDecoder DUT (.Bin(count[4:0]), .Bout(code[31:0]) ) ;
 
 
    //////////////////
@@ -63,3 +66,4 @@ module tb_OneHotDecoder ;
    end
 
 endmodule
+
