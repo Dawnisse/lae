@@ -9,7 +9,7 @@ on the [**main CampusNet course page**](https://fisica.campusnet.unito.it/do/cor
 * [**Git configuration**](#git-configuration)
 * [**Repository download**](#repository-download)
 * [**UNIX environment setup**](#environment-setup)
-* [**Sample simulation flow**](#sample-simulation-flow)
+* [**Sample Xilinx Vivado simulation flow**](#sample-xilinx-vivado-simulation-flow)
 * [**Basic git commands**](#basic-git-commands)
 * [**Webex lectures**](#webex-lectures)
 
@@ -100,7 +100,7 @@ Sample scripts `sample/bashrc` and `sample/cshrc` for Linux, as well `sample/log
 both `csh/tcsh` and `sh/bash/zsh` Linux shells and the Windows Command Prompt and to help students to setup the proper UNIX/Windows
 runtime environment.
 
-# Sample simulation flow
+# Sample Xilinx Vivado simulation flow
 [**[Contents]**](#contents)
 
 A small Verilog simulation example is provided to **test your environment setup** and **tools installation**.<br/>

@@ -1,6 +1,8 @@
 # Lab 5 Instructions
 
-In this lab we start discussing the FPGA implementation flow and chip details.
+In this lab we start discussing the **FPGA implementation flow** using Xilinx Vivado.
+For this purpose we create a simple **Vivado project** in **graphical mode** to explore
+**GUI functionalities** and **FPGA implementation details**.
 
 As a first step, **open a terminal** and go inside the `lab5/` directory :
 
@@ -35,15 +37,42 @@ Finally, copy the main **Vivado Tcl scripts** under `scripts/` :
 ```
 
 
-To create a new Vivado project, either launch 
+Create a new simple Verilog source e.g. `rtl/AndOr.v` `implementing some basic boolean function, for example :
+
+```verilog
+`timescale 1ns / 100ps
+
+module AndOr (
+
+   input wire A,B,C,
+   output wire Z
+
+   ) ;
+
+   assign Z = (A & B) | C ;
+
+endmodule
+```
+
+To create a new **Vivado project**, either launch
 
 ```
 % vivado -mode gui
 ```
 
-and follow the Project Wizard or type in the Vivado Tcl console
+and follow the **New Project wizard** or type
 
 ```
-Vivado% source ./scripts/project.tcl
+% make project mode=gui
 ```
+
+at the command line.
+
+Load the Verilog file in the newly created project and try to run from the GUI **all steps of the FPGA implementation flow** :
+
+* RTL elaboration
+* synthesis
+* place-and-route
+* bitstream generation
+
 
