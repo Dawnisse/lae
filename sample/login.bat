@@ -26,12 +26,19 @@ set XILINX_DIR=C:\Xilinx
 call %XILINX_DIR%\Vivado\<version>\settings64.bat
 
 
-:: add GnuWin executables to search path
-set PATH=C:\where\you\installed\GnuWin\bin;%PATH%
+:: add MINGW executables from Git for Windows to search path
+set PATH=C:\where\you\installed\Git\bin;C:\where\you\installed\Git\usr\bin;%PATH%
 
 
-:: fix GnuWin mkdir executable (https://superuser.com/questions/1253369/gnuwin32-makefile-mkdir-p)
-alias mkdir="mkdir" $*
+:: fix native mkdir and echo executables (https://superuser.com/questions/1253369/gnuwin32-makefile-mkdir-p)
+alias mkdir="mkdir.exe" $*
+alias echo="echo.exe" $*
+
+
+:: a few useful aliases for ls commands
+doskey ls=ls --color $*
+doskey ll=ls -la $*
+
 
 :: add here additional user customizations
 
