@@ -37,7 +37,15 @@ Finally, copy the main **Vivado Tcl scripts** under `scripts/` :
 ```
 
 
-Create a new simple Verilog source e.g. `rtl/AndOr.v` `implementing some basic boolean function, for example :
+Create a new Verilog RTL source e.g.
+
+```
+% gedit rtl/AndOr.v &   (for Linux users)
+% npp rtl\AndOr.v       (for Windows users)
+```
+
+and implement some basic boolean function, for example :
+
 
 ```verilog
 `timescale 1ns / 100ps
@@ -70,9 +78,8 @@ at the command line.
 
 Load the Verilog file in the newly created project and try to run from the GUI **all steps of the FPGA implementation flow** :
 
-* RTL elaboration
-* synthesis
+* generic synthesis (RTL elaboration)
+* mapped synthesis
 * place-and-route
 * bitstream generation
-
 
