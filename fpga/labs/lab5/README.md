@@ -29,15 +29,18 @@ To create a new fresh working area, type :
 % make area
 ```
 
-Finally, copy the main **Vivado Tcl scripts** under `scripts/` :
+Copy the main **Vivado Tcl scripts** under `scripts/` and **Xilinx Design Constraints (XDC)**
+for the [**Digilent Arty A7 board**](https://store.digilentinc.com/arty-a7-artix-7-fpga-development-board-for-makers-and-hobbyists/)<br/>
+under `xdc/` :
 
 ```
 % cp .solutions/simulation.tcl ./scripts/
-% cp .solutions/project.tcl ./scripts/
+% cp .solutions/project.tcl    ./scripts/
+% cp .solutions/arty_all.xdc   ./xdc
 ```
 
 
-Create a new Verilog RTL source e.g.
+Create a new Verilog RTL source e.g. `rtl/AndOr.v`
 
 ```
 % gedit rtl/AndOr.v &   (for Linux users)
@@ -62,6 +65,15 @@ module AndOr (
 endmodule
 ```
 
+
+**Customize** the provided sample XDC file in order to **map Verilog I/O ports to some physical FPGA pins** :
+
+```
+% gedit xdc/arty_all.xdc &    (for Linux users)
+% npp xdc\arty_all.xdc        (for Windows users)
+```
+
+
 To create a new **Vivado project**, either launch
 
 ```
@@ -76,10 +88,11 @@ and follow the **New Project wizard** or type
 
 at the command line.
 
-Load the Verilog file in the newly created project and try to run from the GUI **all steps of the FPGA implementation flow** :
+Load **both the Verilog file and the constraints file** in the newly created project and
+try to run from the GUI **all steps of the FPGA implementation flow** :
 
 * generic synthesis (RTL elaboration)
 * mapped synthesis
-* place-and-route
+* place-and-route (implementation)
 * bitstream generation
 
