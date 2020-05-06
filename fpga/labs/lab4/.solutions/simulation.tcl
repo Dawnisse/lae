@@ -25,6 +25,7 @@ set rtlDir       [pwd]/rtl
 set ipsDir       [pwd]/cores
 set benchDir     [pwd]/bench
 set scriptsDir   [pwd]/scripts
+set logDir       [pwd]/logs
 set workDir      [pwd]/work/sim
 
 
@@ -83,7 +84,7 @@ set_property target_language Verilog [current_project]
 set_property target_simulator Xsim [current_project]
 
 ## simulator language
-set_property simulator_language Mixed [current_project] ;  # Verilog|VHDL|Mixed
+set_property simulator_language Verilog [current_project] ;  # Verilog|VHDL|Mixed
 
 
 #############################################
@@ -184,8 +185,8 @@ launch_simulation -simset sim_1 -step all -mode behavioral -verbose
 # -mode [behavioral | post-synthesis | post-implementation]
 # -step [compile | elaborate | simulate | all]
 
-report_property [current_project]
-report_property [current_sim]
+#report_property [current_project]
+#report_property [current_sim]
 
 
 ##########################################
