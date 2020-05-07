@@ -8,6 +8,7 @@ on the [**main CampusNet course page**](https://fisica.campusnet.unito.it/do/cor
 
 * [**Git configuration**](#git-configuration)
 * [**Repository download**](#repository-download)
+* [**Create your personal development branch**](#create-your-personal-development-branch)
 * [**UNIX environment setup**](#environment-setup)
 * [**Sample Xilinx Vivado simulation flow**](#sample-xilinx-vivado-simulation-flow)
 * [**Basic git commands**](#basic-git-commands)
@@ -91,6 +92,39 @@ You can create a `git root` alias to easily locate the Git top-level directory:
 For setting up the proper command-line runtime environment, refer to section [**Environment setup**](#environment-setup).
 
 ** **WARN:** All `git` commands **must be invoked** inside the top `lae/` directory or from any other sub-directory of the repository !
+
+
+# Create your personal development branch
+[**[Contents]**](#contents)
+
+By default, the first time you download the repository you are in the `master` branch.
+The `master` branch should always represent the "stable version" of the project :
+
+```
+% git branch
+*master
+```
+
+The asterisk indicates the **current working branch**.
+
+
+As a first step after downloading the repository for the first time
+**create your personal development branch** named `student` :
+
+```
+% git branch student
+% git checkout student
+```
+
+You can now **list all branches** in your local machine with :
+
+```
+% git branch
+master
+*student
+```
+
+Please, be sure that the asterisk now points to your own development branch `student` and not to the `master` branch.
 
 
 # Environment setup

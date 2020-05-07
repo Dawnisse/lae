@@ -18,7 +18,7 @@ tmp/*
 temp/*
 
 ## test directory content
-fpga/test/*
+test/*
 
 ## all students stuffs (use git add -f to add .solutions/ instead)
 fpga/labs/*
