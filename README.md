@@ -149,4 +149,7 @@ A more complete guide to the basic `git` commands can be found [**here**](http:/
 
 * Lecture 8<br/>
 [**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=m4034eb89f9782fad79c4607b90eedaab)<br/>
+[**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/a76c8138b3b84b218b9e1939f39da304)
 
+* Lecture 9<br>
+**[Webex link]** - TODO
