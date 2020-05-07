@@ -5,18 +5,20 @@
 
 ## project name
 set projectName arty7
+
+## project directory
 set projectDir  [pwd]/work/impl ; file mkdir ${projectDir}
 
 
 #
 # Resulting directories tree:
 #
-# ./work/sim/${projectName}.xpr
-# ./work/sim/${projectName}.cache/
-# ./work/sim/${projectName}.hw/
-# ./work/sim/${projectName}.ip_user_files/
-# ./work/sim/${projectName}.sim/
-# ./work/sim/${projectName}.srcs/
+# ./work/impl/${projectName}.xpr
+# ./work/impl/${projectName}.cache/
+# ./work/impl/${projectName}.hw/
+# ./work/impl/${projectName}.ip_user_files/
+# ./work/impl/${projectName}.sim/
+# ./work/impl/${projectName}.srcs/
 #
 
 ## target FPGA (Digilent Arty-7 board)
