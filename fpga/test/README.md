@@ -23,14 +23,28 @@ List all available `Makefile` targets with :
 % make help
 ```
 
-Compile the example Verilog file `test.v` and run the simulation with :
+Create a new fresh working area with :
+
+```
+% make area
+```
+
+
+Compile and elaborate the example RTL design and run the simulation with :
 
 ```
 % make compile
+% make elaborate
+% make simulate
+```
+
+For less typing, this is equivalent to
+
+```
 % make sim
 ```
 
-Explore the **Xilinx XSim simulator** graphical interface. Once happy, close the window.
+Explore simulation results in the **Xilinx XSim simulator** graphical interface. Once happy, close the window.
 
 To delete all log files and other temporary files :
 
@@ -41,7 +55,7 @@ To delete all log files and other temporary files :
 Explore the content of provided files using basic Linux commands, e.g. `cat`, `less` or `more` :
 
 ```
-% cat test.v
-% cat Makefile
-% cat run.tcl
+% cat  rtl/counter.v
+% cat  Makefile
+% more scripts/sim/compile.tcl etc.
 ```
