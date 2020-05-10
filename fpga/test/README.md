@@ -38,7 +38,7 @@ Compile and elaborate the example RTL design and run the simulation with :
 % make simulate
 ```
 
-For less typing, this is equivalent to
+For less typing, this is equivalent to :
 
 ```
 % make sim

@@ -23,7 +23,7 @@
 #
 # This **CUSTOM** Tcl-based simulation flow basically reproduces all compilation/elaboration/simulation
 # steps that actually Vivado performs "under the hood" for you without notice in project-mode.
-# Most important, this custom flow allows is **PORTABLE** across Linux/Windows systems and allows
+# Most important, this custom flow is **PORTABLE** across Linux/Windows systems and allows
 # to "relaunch" a simulation after RTL or testbench changes from the XSim Tcl console without
 # the need of creating a project.
 #

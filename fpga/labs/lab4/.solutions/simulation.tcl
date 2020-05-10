@@ -241,6 +241,17 @@ puts "\nTotal elapsed-time for [info script]: [format "%.2f" [expr $seconds/60.]
 #get_scopes
 #report_scopes
 
+## change default radix for buses (default is hexadecimal)
+#set_property radix bin       [current_sim]
+#set_property radix unsigned  [current_sim] ;  ## unsigned decimal
+#set_property radix hex       [current_sim]
+#set_property radix dec       [current_sim] ;  ## signed decimal
+#set_property radix ascii     [current_sim]
+#set_property radix oct       [current_sim]
+
+## save Waveform Configuration File (WCFG) for later restore
+# save_wave_config /path/to/filename.wcfg
+
 ## query signal values and drivers
 #get_value /path/to/signal
 #describe /path/to/signal
@@ -264,7 +275,7 @@ puts "\nTotal elapsed-time for [info script]: [format "%.2f" [expr $seconds/60.]
 #remove_bp -file fileName -line lineNumber
 #remove_bp -all
 
-## unload the simulation without exiting Vivado
+## unload the simulation snapshot without exiting Vivado
 #close_sim
 
 ## dump Switching Activity Interchange Format (SAIF) file for power analysis
