@@ -123,10 +123,10 @@ proc relaunch {} {
    #save_wave_config [current_wave_config]
 
    ## unload the current simulation snapshot without exiting XSim
-   close_sim -force
+   close_sim -force -quiet
 
    ## ensure to start from scratch
-   exec rm -rf xsim.dir .Xil [glob *.pb] [glob *.wdb]
+   catch {exec rm -rf xsim.dir .Xil [glob *.pb] [glob *.wdb] }
 
    ## re-compile sources
    source [pwd]/../../scripts/sim/compile.tcl -notrace ;   ## **IMPORTANT: assume to run the flow inside work/sim !
