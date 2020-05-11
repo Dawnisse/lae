@@ -116,4 +116,29 @@ Simulate the behaviour of the D-FlipFlop with :
 % make sim
 ```
 
-**Modify** the provided testbench to **simulate also the functionality of the D-latch**.
+Verify the difference between **synchronous** and **asynchronous reset** by changing this lines of code
+
+```verilog
+always @(posedge clk) begin                     // synchronous reset
+//always @(posedge clk or posedge reset) begin      // asynchronous reset
+```
+
+into
+
+```verilog
+//always @(posedge clk) begin                     // synchronous reset
+always @(posedge clk or posedge reset) begin      // asynchronous reset
+```
+
+In order to **relaunch the simulation** after changes without closing the XSim graphical interface simply type
+
+```
+relaunch
+```
+
+in the XSim **Tcl console**.
+
+
+## Exercise
+
+Create a suitable testbench `bench/tb_DLATCH.v` to **simulate and verify also the functionality of the D-latch**.
