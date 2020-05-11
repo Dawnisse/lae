@@ -36,7 +36,7 @@
 set TCL_DIR  [pwd]/../../scripts ;   ## **IMPORTANT: assume to run the flow inside work/sim !
 set LOG_DIR  [pwd]/../../logs
 
-## top-level RTL module (then tb_${RTL_TOP_MODULE}.v is the testbench
+## top-level RTL module (then tb_${RTL_TOP_MODULE}.(s)v is the testbench)
 set RTL_TOP_MODULE $::env(RTL_TOP_MODULE)
 
 puts "\n**INFO: Invoking XSim standalone executable from [pwd]" ;

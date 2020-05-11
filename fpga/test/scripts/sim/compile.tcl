@@ -39,9 +39,9 @@ set RTL_DIR  [pwd]/../../rtl
 set SIM_DIR  [pwd]/../../bench
 
 
-## **WARN: all Verilog sources rtl/*.v and bench/*.v will be compiled
-set RTL_SOURCES [glob ${RTL_DIR}/*.v]
-set SIM_SOURCES [glob ${SIM_DIR}/*.v]
+## **WARN: all Verilog/SystemVerilog sources rtl/*.(s)v and bench/*.(s)v will be compiled
+set RTL_SOURCES [concat [glob -nocomplain ${RTL_DIR}/*.v] [glob -nocomplain ${RTL_DIR}/*.sv]]
+set SIM_SOURCES [concat [glob -nocomplain ${SIM_DIR}/*.v] [glob -nocomplain ${SIM_DIR}/*.sv]]
 
 
 ## delete previous log file if exists
@@ -51,9 +51,9 @@ if { [file exists ${LOG_DIR}/compile.log] } {
 }
 
 
-#############################################
-##   compile all Verilog sources (xvlog)   ##
-#############################################
+#####################################
+##   compile all sources (xvlog)   ##
+#####################################
 
 #
 # **NOTE

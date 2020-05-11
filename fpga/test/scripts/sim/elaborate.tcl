@@ -38,7 +38,7 @@ set LOG_DIR  [pwd]/../../logs
 set RTL_DIR  [pwd]/../../rtl
 set SIM_DIR  [pwd]/../../bench
 
-## top-level RTL module (then tb_${TOP}.v the testbench)
+## top-level RTL module (then tb_${RTL_TOP_MODULE}.(s)v is the testbench)
 set RTL_TOP_MODULE $::env(RTL_TOP_MODULE)
 
 
