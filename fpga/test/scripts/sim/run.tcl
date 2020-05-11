@@ -132,10 +132,10 @@ proc relaunch {} {
    exec rm -rf xsim.dir .Xil [glob *.pb] [glob *.wdb]
 
    ## re-compile sources
-   source [pwd]/../../scripts/sim/compile.tcl ;   ## **IMPORTANT: assume to run the flow inside work/sim !
+   source [pwd]/../../scripts/sim/compile.tcl -notrace ;   ## **IMPORTANT: assume to run the flow inside work/sim !
 
    ## re-elaborate the design
-   source [pwd]/../../scripts/sim/elaborate.tcl
+   source [pwd]/../../scripts/sim/elaborate.tcl -notrace
 
    ## reload the simulation snapshot
    xsim tb_${::env(RTL_TOP_MODULE)}
