@@ -1,7 +1,9 @@
 //
-// This a copy AS IS of $XILINX_VIVADO/data/verilog/src/glbl.v
-// Compile the file along with your RTL and simulation sources
+// This is a copy AS IS of $XILINX_VIVADO/data/verilog/src/glbl.v
+// Compile this file along with your RTL and simulation sources
 // in order to use Xilinx primitives in your design.
+//
+// Ref. also to https://www.xilinx.com/support/answers/63985.html
 //
 
 `ifndef GLBL
