@@ -39,7 +39,7 @@ SHELL := bash
 # By default all rtl/*.v and bench/*.v sources are parsed and compiled using xvlog,
 # then tb_$(dut) is considered as testbench module when xelab is invoked for elaboration.
 #
-dut := Counter
+dut := DFF
 
 
 
@@ -83,6 +83,7 @@ MKDIR := mkdir -p -v
 
 
 ## default target
+.PHONY : default
 default : help
 
 
@@ -109,28 +110,33 @@ area :
 
 
 ## parse and compile all Verilog sources
+.PHONY : compile
 compile : $(WORK_DIR)/sim
 
 	@cd work/sim ; tclsh ../../scripts/sim/$@.tcl
 
 
 ## elaborate the design
+.PHONY : elaborate
 elaborate :
 
 	@cd work/sim ; export RTL_TOP_MODULE=$(dut) ; tclsh ../../scripts/sim/$@.tcl
 
 
 ## run simulation executable
+.PHONY : simulate
 simulate :
 
 	@cd work/sim ; export RTL_TOP_MODULE=$(dut) ; tclsh ../../scripts/sim/$@.tcl
 
 
 ## one-step compilation, elaboration and simulation (same as make compile elaborate simulate)
+.PHONY : sim
 sim : compile elaborate simulate
 
 
 ## delete all log files and temporary files
+.PHONY : clean
 clean :
 
 	@$(RM) *.log *.jou *.pb *.wdb $(LOG_DIR)/*
@@ -140,6 +146,7 @@ clean :
 
 
 ## command line help 
+.PHONY : help
 help :
 
 	@$(ECHO) ""

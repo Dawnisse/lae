@@ -30,10 +30,10 @@ Create a new fresh working area :
 Copy from the `.solutions/` directory all **Tcl simulation scripts** as follows :
 
 ```
-% cp .solutions/compile.tcl   ./scripts/sim/
-% cp .solutions/elaborate.tcl ./scripts/sim/
-% cp .solutions/simulate.tcl  ./scripts/sim/
-% cp .solutions/run.tcl       ./scripts/sim/
+% cp .solutions/scripts/compile.tcl   ./scripts/sim/
+% cp .solutions/scripts/elaborate.tcl ./scripts/sim/
+% cp .solutions/scripts/simulate.tcl  ./scripts/sim/
+% cp .solutions/scripts/run.tcl       ./scripts/sim/
 ```
 
 Create a first new Verilog file `rtl/DLATCH.v` and write the RTL code for a **D-latch** :
@@ -105,21 +105,29 @@ endmodule
 Copy from the `.solutions/` directory the following **simulation sources** :
 
 ```
-% cp .solutions/glbl.v      ./bench/
-% cp .solutions/ClockGen.v  ./bench/
-% cp .solutions/tb_DFF.v    ./bench/
+% cp .solutions/bench/glbl.v      ./bench/
+% cp .solutions/bench/ClockGen.v  ./bench/
+% cp .solutions/bench/tb_DFF.v    ./bench/
 ```
 
-Simulate the behaviour of the D-FlipFlop with :
+Simulate with Xilinx XSim simulator the functionality of the D-FlipFlop with :
 
 ```
 % make sim
 ```
 
+This `Makefile` target is equivalent to :
+
+```
+% make compile
+% make elaborate
+% make simulate
+```
+
 Verify the difference between **synchronous** and **asynchronous reset** by changing this lines of code
 
 ```verilog
-always @(posedge clk) begin                     // synchronous reset
+always @(posedge clk) begin                         // synchronous reset
 //always @(posedge clk or posedge reset) begin      // asynchronous reset
 ```
 
@@ -130,7 +138,7 @@ into
 always @(posedge clk or posedge reset) begin      // asynchronous reset
 ```
 
-In order to **relaunch the simulation** after changes without closing the XSim graphical interface simply type
+In order to **relaunch the simulation** after changes **without closing the XSim graphical interface** simply type
 
 ```
 relaunch
