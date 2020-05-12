@@ -2,7 +2,7 @@
 
 In this lab we simulate and implement on FPGA a simple **8-bit shift register**.
 
-As a first step, open a terminal and go inside the `lab6/` directory :
+As a first step, open a terminal and go inside the `lab7/` directory :
 
 
 ```

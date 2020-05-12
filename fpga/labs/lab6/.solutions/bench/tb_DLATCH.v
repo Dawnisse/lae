@@ -43,7 +43,6 @@ module tb_DLATCH ;
 
       #100 load = 1'b0 ;
       #500 load = 1'b1 ;
-      #300 load = 1'b1 ;
       #300 load = 1'b0 ;
       #750 load = 1'b1 ;
       #300 load = 1'b0 ;

@@ -47,7 +47,7 @@ Create a first new Verilog file `rtl/DLATCH.v` and write the RTL code for a **D-
 
 `timescale 1ns / 100ps
 
-module DFF (
+module DLATCH (
 
    input  wire D, EN,
    output reg Q
