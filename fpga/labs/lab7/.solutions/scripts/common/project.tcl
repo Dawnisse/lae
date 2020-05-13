@@ -41,7 +41,7 @@ if { [lindex $argv 0] == {} } {
    ## create a new project
    create_project -force -part ${targetFpga} ${projectName} ${projectDir} -verbose
 
-   puts "\nSuccessfully created Vivado project ${projectName} attached to ${targetFpga} device."
+   puts "\nSuccessfully created new Vivado project ${projectName} attached to ${targetFpga} device."
    puts "Project XML file is [pwd]/work/impl/${projectName}.xpr"
 
 }

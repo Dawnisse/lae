@@ -157,6 +157,16 @@ project : $(TCL_DIR)/common/project.tcl
 ##_______________________________________________________________________________________
 
 
+## launch IP flow in GUI mode
+.PHONY : ip
+ip : cores
+
+	@vivado -mode gui -source $(TCL_DIR)/common/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
+##_______________________________________________________________________________________
+
+
+
+
 ## delete all log files and temporary files
 .PHONY : clean
 clean :
@@ -173,7 +183,7 @@ clean :
 help :
 
 	@$(ECHO) ""
-	@$(ECHO) "\nUsage: make <target> [dut=ModuleName]"
+	@$(ECHO) "\nUsage: make <target> [dut=ModuleName] [mode=gui|tcl]"
 	@$(ECHO) ""
 	@$(ECHO) "Available targets:"
 	@$(ECHO) ""
@@ -184,5 +194,6 @@ help :
 	@$(ECHO) " - make simulate    Run simulation executable"
 	@$(ECHO) " - make sim         Alias, one step compilation, elaboration and simulation"
 	@$(ECHO) " - make project     Creates new fresh project attached to Arty7 device"
+	@$(ECHO) " - make ip          Customize and compile IP cores for your design" 
 	@$(ECHO) " - make clean       Delete all log files and temporary files\n"
 ##_______________________________________________________________________________________
