@@ -187,14 +187,17 @@ A more complete guide to the basic `git` commands can be found [**here**](http:/
 [**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=m4034eb89f9782fad79c4607b90eedaab)<br/>
 [**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/a76c8138b3b84b218b9e1939f39da304)
 
-* Lecture 9<br>
+* Lecture 9<br/>
 [**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=mac33ab0c4781c9a304a23db6fe0479c9)<br/>
 [**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/b00e5bce85a64061bd9932628de607aa)
 
-* Lecture 10<br>
+* Lecture 10<br/>
 [**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=me5f4409644da9c4af862fc9fbd1375ff)<br/>
 [**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/299f3d7acbb34901967b4417a7f685b1)
 
-* Lecture 11<br>
+* Lecture 11<br/>
 [**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=m61685b12e338a43b0c32d0fd0a3f7a1b)<br/>
+[**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/9a752bb09cde401ab3450d2545118d67)
 
+* Lecture 12<br/>
+[**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=mef337034b18e93a0eecaefb7585358e8)<br/>
