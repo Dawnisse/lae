@@ -25,7 +25,8 @@ if { [lindex $argv 0] == {} } {
    puts "\n **ERROR: The script requires a project name !"
    puts "Please specify a project name and retry."
 
-   exit 0
+   ## force an exit
+   exit 1
 
 } else {
 
@@ -42,6 +43,6 @@ if { [lindex $argv 0] == {} } {
    create_project -force -part ${targetFpga} ${projectName} ${projectDir} -verbose
 
    puts "\nSuccessfully created new Vivado project ${projectName} attached to ${targetFpga} device."
-   puts "Project XML file is [pwd]/work/impl/${projectName}.xpr"
+   puts "Project XML file is [pwd]/work/impl/${projectName}.xpr\n\n"
 
 }
