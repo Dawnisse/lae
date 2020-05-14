@@ -1,7 +1,7 @@
 #
 # sample ~/.bashrc login script for Bash Linux shell
 #
-echo "Loading $HOME/.bashrc"
+echo -e "\nLoading $HOME/.bashrc\n"
 
 
 # variable to locate the main Xilinx Vivado installation directory, e.g. /opt/Xilinx

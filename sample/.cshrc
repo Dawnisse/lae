@@ -1,7 +1,7 @@
 #
 # sample ~/.cshrc for sh/tcsh Linux shells
 #
-echo "Loading $HOME/.cshrc"
+echo -e "\nLoading $HOME/.cshrc\n"
 
 
 # variable to locate the main Xilinx Vivado installation directory e.g. /opt/Xilinx
