@@ -30,10 +30,10 @@ Create a new fresh working area :
 Copy from the `.solutions/` directory all **Tcl simulation scripts** as follows :
 
 ```
-% cp .solutions/scripts/compile.tcl   ./scripts/sim/
-% cp .solutions/scripts/elaborate.tcl ./scripts/sim/
-% cp .solutions/scripts/simulate.tcl  ./scripts/sim/
-% cp .solutions/scripts/run.tcl       ./scripts/sim/
+% cp .solutions/scripts/sim/compile.tcl   ./scripts/sim/
+% cp .solutions/scripts/sim/elaborate.tcl ./scripts/sim/
+% cp .solutions/scripts/sim/simulate.tcl  ./scripts/sim/
+% cp .solutions/scripts/sim/run.tcl       ./scripts/sim/
 ```
 
 Create a first new Verilog file `rtl/DLATCH.v` and write the RTL code for a **D-latch** :
