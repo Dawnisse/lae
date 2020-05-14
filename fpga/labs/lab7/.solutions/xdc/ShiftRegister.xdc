@@ -63,14 +63,16 @@ set_property -dict { PACKAGE_PIN E16   IOSTANDARD LVCMOS33 } [get_ports SO]
 set_units -capacitance pF
 
 ## on-board 100 MHz clock (default time unit in XDC is ns)
-create_clock -period 10.000 -name clk -waveform {0.000 5.000} -add [get_ports clk]
+create_clock -period 10.000 -name clk100 -waveform {0.000 5.000} -add [get_ports clk] ;   ## reg2reg timing paths
 
 ## what happens if we declare 1 GHz clock instead ?
-#create_clock -period 1.000 -name clk -waveform {0.000 0.500} -add [get_ports clk]
+#create_clock -period 1.000 -name clk100 -waveform {0.000 0.500} -add [get_ports clk]
 
 ## **WARN: the load capacitance is used during power analysis when running the report_power command, but is not used during timing analysis
 set_load 10 [all_outputs]
 
-## assume 2 ns input delay for all input signals
-set_input_delay 2.0 [all_inputs]
+## input delay for all input signals ref. to master clock (assume approx. 1/2 clock period)
+set_input_delay 5.0 -clock clk100 [get_ports SI]
+set_input_delay 5.0 -clock clk100 [get_ports LOAD]
+set_input_delay 5.0 -clock clk100 [get_ports PDATA[*]]
 
