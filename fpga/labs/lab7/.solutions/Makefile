@@ -151,20 +151,33 @@ sim : compile elaborate simulate
 
 ## create fresh Vivado project attached to Arty7 device
 .PHONY : project
-project : $(TCL_DIR)/common/project.tcl
+project : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/project.tcl
 
-	@vivado -mode $(mode) -source $(TCL_DIR)/common/$@.tcl -log $(LOG_DIR)/$@.log -nojournal -verbose -notrace -tclargs $(dut)
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/common/$@.tcl -log $(LOG_DIR)/$@.log -nojournal -verbose -notrace -tclargs $(dut)
+##_______________________________________________________________________________________
+
+
+## restore Vivado project (.xpr file)
+restore : 
+
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -log $(LOG_DIR)/$@.log -nojournal -verbose -notrace $(xml) 
 ##_______________________________________________________________________________________
 
 
 ## launch IP flow in GUI mode
 .PHONY : ip
-ip : cores
+ip : cores $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/ip.tcl
 
-	@vivado -mode gui -source $(TCL_DIR)/common/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
+	@vivado -mode gui -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/common/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
 ##_______________________________________________________________________________________
 
 
+## launch Vivado GUI and open the Hardware Manager
+.PHONY :
+hm : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/hm.tcl
+
+	@vivado -mode gui -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/common/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
+##_______________________________________________________________________________________
 
 
 ## delete all log files and temporary files
@@ -183,7 +196,7 @@ clean :
 help :
 
 	@$(ECHO) ""
-	@$(ECHO) "\nUsage: make <target> [dut=ModuleName] [mode=gui|tcl]"
+	@$(ECHO) "\nUsage: make <target> [dut=ModuleName] [mode=gui|tcl] [xml=/path/to/project.xpr]"
 	@$(ECHO) ""
 	@$(ECHO) "Available targets:"
 	@$(ECHO) ""
@@ -194,6 +207,9 @@ help :
 	@$(ECHO) " - make simulate    Run simulation executable"
 	@$(ECHO) " - make sim         Alias, one step compilation, elaboration and simulation"
 	@$(ECHO) " - make project     Creates new fresh project attached to Arty7 device"
-	@$(ECHO) " - make ip          Customize and compile IP cores for your design" 
+	@$(ECHO) " - make restore     Restore Vivado project from XML project file (.xpr)"
+	@$(ECHO) " - make ip          Customize and compile IP cores for your design"
+	@$(ECHO) " - make hm          Launch Vivado in GUI mode and open the Hardware Manager"
 	@$(ECHO) " - make clean       Delete all log files and temporary files\n"
 ##_______________________________________________________________________________________
+
