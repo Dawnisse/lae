@@ -37,21 +37,21 @@ set TCL_DIR  [pwd]/../../scripts ;   ## **IMPORTANT: assume to run the flow insi
 set LOG_DIR  [pwd]/../../logs
 set RTL_DIR  [pwd]/../../rtl
 set SIM_DIR  [pwd]/../../bench
+set IPS_DIR  [pwd]/../../cores
 
 ## top-level RTL module (then tb_${RTL_TOP_MODULE}.(s)v is the testbench)
 set RTL_TOP_MODULE $::env(RTL_TOP_MODULE)
 
 
-## delete previous log file if exists
+####################################
+##   design elaboration (xelab)   ##
+####################################
+
+## delete the previous log file if exists
 if { [file exists ${LOG_DIR}/elaborate.log] } {
 
    file delete ${LOG_DIR}/elaborate.log
 }
-
-
-####################################
-##   design elaboration (xelab)   ##
-####################################
 
 #
 # **IMPORTANT
@@ -72,9 +72,8 @@ if { [file exists ${LOG_DIR}/elaborate.log] } {
 puts "\n-- Elaborating the design ...\n"
 
 catch {exec xelab -relax -mt 2 \
-   -L work -L simprims_ver -L secureip \
-   -debug all work.tb_${RTL_TOP_MODULE} work.glbl \
-   -snapshot tb_${RTL_TOP_MODULE} -nolog >@stdout 2>@stdout | tee ${LOG_DIR}/elaborate.log}
+   -L work -L xpm -L unisims_ver -L unimacro_ver -L secureip \
+   -debug all work.tb_${RTL_TOP_MODULE} work.glbl -snapshot tb_${RTL_TOP_MODULE} -nolog >@stdout 2>@stdout | tee ${LOG_DIR}/elaborate.log}
 
 
 

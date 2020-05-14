@@ -39,8 +39,15 @@ set RTL_DIR  [pwd]/../../rtl
 set SIM_DIR  [pwd]/../../bench
 
 
-## **WARN: all Verilog/SystemVerilog sources rtl/*.(s)v and bench/*.(s)v will be compiled
-set RTL_SOURCES [concat [glob -nocomplain ${RTL_DIR}/*.v] [glob -nocomplain ${RTL_DIR}/*.sv]]
+## VHDL sources
+set RTL_VHDL_SOURCES [glob -nocomplain ${RTL_DIR}/*.vhd]
+
+
+## Verilog/SystemVerilog sources
+set RTL_VLOG_SOURCES [concat [glob -nocomplain ${RTL_DIR}/*.v] [glob -nocomplain ${RTL_DIR}/*.sv]]
+
+
+## simulation sources (assume to write the testbench in Verilog or SystemVerilog)
 set SIM_SOURCES [concat [glob -nocomplain ${SIM_DIR}/*.v] [glob -nocomplain ${SIM_DIR}/*.sv]]
 
 
@@ -51,9 +58,9 @@ if { [file exists ${LOG_DIR}/compile.log] } {
 }
 
 
-#####################################
-##   compile all sources (xvlog)   ##
-#####################################
+###########################################
+##   compile all sources (xvlog/xvhdl)   ##
+###########################################
 
 #
 # **NOTE
@@ -64,12 +71,25 @@ if { [file exists ${LOG_DIR}/compile.log] } {
 
 puts "\n-- Parsing sources ...\n"
 
-foreach src [concat ${RTL_SOURCES} ${SIM_SOURCES}] {
+foreach src [concat ${RTL_VLOG_SOURCES} ${SIM_SOURCES}] {
 
    puts "Compiling Verilog source file ${src} ..."
 
    ## launch the xvlog executable from Tcl
    catch {exec xvlog -relax -sv -work work ${src} -nolog | tee -a ${LOG_DIR}/compile.log}
+}
+
+
+if { [llength ${RTL_VHDL_SOURCES}] != 0 } {
+
+   foreach src ${RTL_VHDL_SOURCES} {
+
+      puts "Compiling VHDL    source file ${src} ..."
+
+   ## launch the xvhdl executable from Tcl
+   catch {exec xvhdl -relax -work work ${src} -nolog | tee -a ${LOG_DIR}/compile.log}
+
+   }
 }
 
 
