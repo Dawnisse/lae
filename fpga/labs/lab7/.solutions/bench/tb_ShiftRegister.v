@@ -29,6 +29,15 @@ module tb_ShiftRegister ;
    ClockGen #(.PERIOD(100.0)) ClockGen_inst ( .clk(clk) ) ;
 
 
+   ////////////////////////////////////////////////////////
+   //   PLL to double the input clock (Xilinx IP core)   //
+   ////////////////////////////////////////////////////////
+
+   wire clk_200, pll_locked ;
+
+   PLL PLL_inst ( .CLK100(clk), .CLK200(clk_200), .LOCKED(pll_locked) ) ;
+
+
    ///////////////////////////
    //   device under test   //
    ///////////////////////////
@@ -47,7 +56,9 @@ module tb_ShiftRegister ;
 
    initial begin
 
-      #0   shift0_load1 = 1'b1 ; data = 8'b0101_1001 ;
+      #0   shift0_load1 = 1'b1 ; data = 8'b1010_1011 ;    // this is equivalent to 8'hAB
+
+      @(posedge pll_locked)           // wait for PLL to lock
 
       #420 shift0_load1 = 1'b0 ;
 
