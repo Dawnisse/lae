@@ -138,7 +138,7 @@ Create a new **Vivado project** attached to the Arty7 device with :
 ```
 
 Using the **Add Sources** menu entry in the  **Flow navigator** load **the main RTL Verilog file** (*Add or create design sources*),
-all **testbench sources** (*Add or create simulation sources*) and the **XDC file** (*Add orreate constraints*) in the newly created
+all **testbench sources** (*Add or create simulation sources*) and the **XDC file** (*Add or create constraints*) in the newly created
 project and try to run from the GUI **all steps of the FPGA implementation flow** :
 
 * behavioral simulation
@@ -157,7 +157,7 @@ project and try to run from the GUI **all steps of the FPGA implementation flow*
 **TODO
 
 
-## Compile a PLL IP core to increase the clock frequency
+## Compile a Phase-Locked Loop (PLL) IP core to increase the clock frequency
 
 Compile a new **Phase-Locked Loop (PLL)** core using the **Vivado IP flow** in order to **synthesize a 200 MHz clock** starting from the
 available **on-board 100 MHz clock**.
@@ -194,6 +194,23 @@ export_xsim_scripts
 
 Inspect source files automatically generated for you in the `cores/PLL` and `cores/export_scripts` directories.
 
+Most important files for our purposes are :
+
+* the main **Xilinx Core Instance (XCI)** XML file `*.xci` containing the IP configuration
+* the Verilog instantiation template `*.veo`
+* the XDC constraints file for the IP core `*.xdc`
+* a self-contained gate-level Verilog netlist `*_netlist.v` for simulations
+
+<hr>
+
+**IMPORTANT**
+
+The  **Xilinx Core Instance (XCI)** XML file containing the configuration of the IP allows to
+easily re-compile from scartch the IP core.
+
+<hr>
+
+
 Modify the original testbench `bench/tb_ShiftRegister.v` and instantita the newly created PLL core :
 
 ```verilog
@@ -211,7 +228,7 @@ ShiftRegister  DUT ( .clk(clk_200), .LOAD(shift0_load1), .PDATA(data), .SI(1'b0)
 
 
 
-Additionally, modify the stimulus and **wait fof the PLL to lock** before de-asserting the `shift0_load1l`control signal for the shift-register :
+Additionally, modify the stimulus and **wait for the PLL to lock** before de-asserting the `shift0_load1l`control signal for the shift-register :
 
 ```verilog
 initial begin
