@@ -36,12 +36,12 @@ proc get_console {} {
    if { $::tcl_platform(platform) == "windows" } {
 
       ## star new cmd.exe prompt on Windows
-      exec cmd.exe /k {$::env(USERPROFILE)/login.bat & prompt=[type exit when done]% } &
+      exec cmd.exe /k {$::env(USERPROFILE)/login.bat & prompt=[type exit before closing the GUI]% } &
 
    } else {
 
       ## start new bash prompt on Linux
-      set ::env(PS1) {[type exit when done]% }
+      set ::env(PS1) {[type exit before closing the GUI]% }
       exec bash --norc &
    }
 }
