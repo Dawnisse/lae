@@ -17,7 +17,16 @@ module tb_Counter ;
 
    wire clk ;
 
-   ClockGen #(.PERIOD(100.0)) ClockGen ( .clk(clk) ) ;   // override default period as module parameter (default is 50.0 ns)
+   ClockGen #(.PERIOD(100.0)) ClockGen ( .clk(clk) ) ;   // override default period as module parameter (default is 10.0 ns)
+
+
+   /////////////////////
+   //   VHDL entity   //
+   /////////////////////
+
+   wire clk_bar ;
+
+   Inverter Inverter_inst ( .X(clk), .ZN(clk_bar) ) ;
 
 
    /////////////////////////////////
@@ -40,7 +49,7 @@ module tb_Counter ;
       #500 reset = 1'b1 ;
       #350 reset = 1'b0 ;
 
-      #3000 $finish ;
+      #3000 $finish ;     // stop the simulation
 
    end
 
