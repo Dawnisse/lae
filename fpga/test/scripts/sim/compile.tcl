@@ -37,6 +37,7 @@ set TCL_DIR  [pwd]/../../scripts ;   ## **IMPORTANT: assume to run the flow insi
 set LOG_DIR  [pwd]/../../logs
 set RTL_DIR  [pwd]/../../rtl
 set SIM_DIR  [pwd]/../../bench
+set IPS_DIR  [pwd]/../../cores
 
 
 ## VHDL sources
@@ -47,20 +48,24 @@ set RTL_VHDL_SOURCES [glob -nocomplain ${RTL_DIR}/*.vhd]
 set RTL_VLOG_SOURCES [concat [glob -nocomplain ${RTL_DIR}/*.v] [glob -nocomplain ${RTL_DIR}/*.sv]]
 
 
+## IP sources (assume to already use Verilog gate-level netlists)
+set IPS_SOURCES [glob -nocomplain ${IPS_DIR}/*/*netlist.v]
+
+
 ## simulation sources (assume to write the testbench in Verilog or SystemVerilog)
 set SIM_SOURCES [concat [glob -nocomplain ${SIM_DIR}/*.v] [glob -nocomplain ${SIM_DIR}/*.sv]]
 
-
-## delete previous log file if exists
-if { [file exists ${LOG_DIR}/compile.log] } {
-
-   file delete ${LOG_DIR}/compile.log
-}
 
 
 ###########################################
 ##   compile all sources (xvlog/xvhdl)   ##
 ###########################################
+
+## delete the previous log file if exists
+if { [file exists ${LOG_DIR}/compile.log] } {
+
+   file delete ${LOG_DIR}/compile.log
+}
 
 #
 # **NOTE
@@ -71,7 +76,7 @@ if { [file exists ${LOG_DIR}/compile.log] } {
 
 puts "\n-- Parsing sources ...\n"
 
-foreach src [concat ${RTL_VLOG_SOURCES} ${SIM_SOURCES}] {
+foreach src [concat ${RTL_VLOG_SOURCES} ${IPS_SOURCES} ${SIM_SOURCES}] {
 
    puts "Compiling Verilog source file ${src} ..."
 
@@ -86,9 +91,8 @@ if { [llength ${RTL_VHDL_SOURCES}] != 0 } {
 
       puts "Compiling VHDL    source file ${src} ..."
 
-   ## launch the xvhdl executable from Tcl
-   catch {exec xvhdl -relax -work work ${src} -nolog | tee -a ${LOG_DIR}/compile.log}
-
+      ## launch the xvhdl executable from Tcl
+      catch {exec xvhdl -relax -work work ${src} -nolog | tee -a ${LOG_DIR}/compile.log}
    }
 }
 

@@ -91,9 +91,8 @@ if { [llength ${RTL_VHDL_SOURCES}] != 0 } {
 
       puts "Compiling VHDL    source file ${src} ..."
 
-   ## launch the xvhdl executable from Tcl
-   catch {exec xvhdl -relax -work work ${src} -nolog | tee -a ${LOG_DIR}/compile.log}
-
+      ## launch the xvhdl executable from Tcl
+      catch {exec xvhdl -relax -work work ${src} -nolog | tee -a ${LOG_DIR}/compile.log}
    }
 }
 
