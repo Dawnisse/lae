@@ -39,7 +39,7 @@ SHELL := bash
 # By default all rtl/*.v and bench/*.v sources are parsed and compiled using xvlog,
 # then tb_$(dut) is considered as testbench module when xelab is invoked for elaboration.
 #
-dut := VCO
+dut := ShiftRegister
 
 
 
@@ -198,7 +198,7 @@ hm : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/hm.tcl
 .PHONY : upload
 upload :
 
-	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal -tclargs $(dut)
 ##_______________________________________________________________________________________
 
 
@@ -206,7 +206,7 @@ upload :
 .PHONY : flash
 flash :
 
-	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal -tclargs $(dut)
 ##_______________________________________________________________________________________
 
 

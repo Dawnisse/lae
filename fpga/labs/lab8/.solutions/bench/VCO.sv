@@ -29,7 +29,7 @@ module VCO (
 
    // VCO parameters
    parameter real INTRINSIC_FREQ = 2.5 ;  // MHz
-   parameter real VCO_GAIN = 10 ;         // V/MHz
+   parameter real VCO_GAIN = 10 ;         // MHz/V
 
    real clk_delay ;
    real freq ;

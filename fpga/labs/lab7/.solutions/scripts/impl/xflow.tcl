@@ -42,7 +42,7 @@ file mkdir ${RPT_DIR}/synthesis
 file mkdir ${RPT_DIR}/placement
 file mkdir ${RPT_DIR}/routing
 
-## outputts directories
+## outputs directories
 set OUT_DIR  [pwd]/results
 
 file mkdir ${OUT_DIR}

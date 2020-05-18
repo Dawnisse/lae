@@ -30,7 +30,7 @@ Create a new fresh working area :
 
 Create a first new **SystemVerilog** simulation source `bench/VCO.sv` with the following content :
 
-```verilog
+```SystemVerilog
 `timescale 1ns / 100ps
 
 module VCO (
@@ -42,7 +42,7 @@ module VCO (
 
    // VCO parameters
    parameter real INTRINSIC_FREQ = 2.5 ;  // MHz
-   parameter real VCO_GAIN = 10 ;         // V/MHz
+   parameter real VCO_GAIN = 10 ;         // MHz/V
 
    real clk_delay ;
    real freq ;
@@ -66,7 +66,7 @@ module VCO (
 endmodule : VCO
 ```
 
-This is of course non-synthesizable code, but **real-number models (RNM)** are very useful to model **mixed signal blocks**
+This is of course **NON-SYNTHESIZABLE CODE**, but **real-number models (RNM)** are very useful to model **mixed signal blocks**
 connected to FPGA devices e.g. A/D and D/A converters, temperature sensors etc.
 
 
@@ -99,7 +99,7 @@ module tb_VCO ;
         #3000 Vctrl = 1.25 ;
 
         #3000 $finish ;
-     end
+   end
 
 endmodule
 ```
