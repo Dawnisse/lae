@@ -39,7 +39,7 @@ SHELL := bash
 # By default all rtl/*.v and bench/*.v sources are parsed and compiled using xvlog,
 # then tb_$(dut) is considered as testbench module when xelab is invoked for elaboration.
 #
-dut := ShiftRegister
+dut := VCO
 
 
 
@@ -123,7 +123,7 @@ area :
 .PHONY : compile
 compile : $(WORK_DIR)/sim
 
-	@cd work/sim ; tclsh ../../scripts/sim/$@.tcl
+	@cd $(WORK_DIR)/sim ; tclsh ../../scripts/sim/$@.tcl
 ##_______________________________________________________________________________________
 
 
@@ -131,7 +131,7 @@ compile : $(WORK_DIR)/sim
 .PHONY : elaborate
 elaborate :
 
-	@cd work/sim ; export RTL_TOP_MODULE=$(dut) ; tclsh ../../scripts/sim/$@.tcl
+	@cd $(WORK_DIR)/sim ; export RTL_TOP_MODULE=$(dut) ; tclsh ../../scripts/sim/$@.tcl
 ##_______________________________________________________________________________________
 
 
@@ -139,7 +139,7 @@ elaborate :
 .PHONY : simulate
 simulate :
 
-	@cd work/sim ; export RTL_TOP_MODULE=$(dut) ; tclsh ../../scripts/sim/$@.tcl
+	@cd $(WORK_DIR)/sim ; export RTL_TOP_MODULE=$(dut) ; tclsh ../../scripts/sim/$@.tcl
 ##_______________________________________________________________________________________
 
 
@@ -157,10 +157,10 @@ project : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/project.tcl
 ##_______________________________________________________________________________________
 
 
-## restore Vivado project (.xpr file)
+## restore Vivado project from XML project file (.xpr) or design checkpoint (.dcp)
 restore : 
 
-	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -log $(LOG_DIR)/$@.log -nojournal -verbose -notrace $(xml) 
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -log $(LOG_DIR)/$@.log -nojournal -verbose -notrace $(db) 
 ##_______________________________________________________________________________________
 
 
@@ -172,11 +172,41 @@ ip : cores $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/ip.tcl
 ##_______________________________________________________________________________________
 
 
+## run Vivado FPGA implementation flow in non-project mode
+.PHONY : xflow
+xflow : $(WORK_DIR)/impl
+
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -log $(LOG_DIR)/$@.log -nojournal -verbose -notrace -tclargs $(dut)
+##_______________________________________________________________________________________
+
+
+## alias, same as 'make xflow'
+.PHONY : bit
+bit : xflow
+##_______________________________________________________________________________________
+
+
 ## launch Vivado GUI and open the Hardware Manager
 .PHONY :
 hm : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/hm.tcl
 
 	@vivado -mode gui -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/common/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
+##_______________________________________________________________________________________
+
+
+## upload bitstream to target FPGA using Hardware Manager
+.PHONY : upload
+upload :
+
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
+##_______________________________________________________________________________________
+
+
+## program external Quad Flash memory
+.PHONY : flash
+flash :
+
+	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal
 ##_______________________________________________________________________________________
 
 
@@ -196,7 +226,7 @@ clean :
 help :
 
 	@$(ECHO) ""
-	@$(ECHO) "\nUsage: make <target> [dut=ModuleName] [mode=gui|tcl] [xml=/path/to/project.xpr]"
+	@$(ECHO) "\nUsage: make <target> [dut=ModuleName] [mode=gui|tcl|batch] [db=/path/to/project.xpr | db=/path/to/project.dcp]"
 	@$(ECHO) ""
 	@$(ECHO) "Available targets:"
 	@$(ECHO) ""
@@ -207,9 +237,13 @@ help :
 	@$(ECHO) " - make simulate    Run simulation executable"
 	@$(ECHO) " - make sim         Alias, one step compilation, elaboration and simulation"
 	@$(ECHO) " - make project     Creates new fresh project attached to Arty7 device"
-	@$(ECHO) " - make restore     Restore Vivado project from XML project file (.xpr)"
+	@$(ECHO) " - make restore     Restore Vivado project from XML project file (.xpr) or design checkpoint (.dcp)"
 	@$(ECHO) " - make ip          Customize and compile IP cores for your design"
+	@$(ECHO) " - make xflow       Run Vivado FPGA implementation flow in non-project mode"
+	@$(ECHO) " - make bit         Alias, same as make xflow"
 	@$(ECHO) " - make hm          Launch Vivado in GUI mode and open the Hardware Manager"
+	@$(ECHO) " - make upload      Upload bitsream to target FPGA using Hardware Manager"
+	@$(ECHO) " - make flash       Program external Quad Flash memory" 
 	@$(ECHO) " - make clean       Delete all log files and temporary files\n"
 ##_______________________________________________________________________________________
 
