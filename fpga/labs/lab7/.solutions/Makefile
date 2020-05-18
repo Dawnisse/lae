@@ -174,7 +174,7 @@ ip : cores $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/ip.tcl
 
 ## run Vivado FPGA implementation flow in non-project mode
 .PHONY : xflow
-xflow : $(WORK_DIR)/impl
+xflow : $(WORK_DIR)/impl $(TCL_DIR)/common/init.tcl $(TCL_DIR)/impl/xflow.tcl
 
 	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -log $(LOG_DIR)/$@.log -nojournal -verbose -notrace -tclargs $(dut)
 ##_______________________________________________________________________________________
@@ -196,7 +196,7 @@ hm : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/common/hm.tcl
 
 ## upload bitstream to target FPGA using Hardware Manager
 .PHONY : upload
-upload :
+upload : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/impl/upload.tcl
 
 	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal -tclargs $(dut)
 ##_______________________________________________________________________________________
@@ -204,7 +204,7 @@ upload :
 
 ## program external Quad Flash memory
 .PHONY : flash
-flash :
+flash : $(TCL_DIR)/common/init.tcl $(TCL_DIR)/impl/flash.tcl
 
 	@vivado -mode $(mode) -source $(TCL_DIR)/common/init.tcl -source $(TCL_DIR)/impl/$@.tcl -notrace -log $(LOG_DIR)/$@.log -nojournal -tclargs $(dut)
 ##_______________________________________________________________________________________
