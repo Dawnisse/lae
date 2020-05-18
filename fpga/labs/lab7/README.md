@@ -154,7 +154,21 @@ project and try to run from the GUI **all steps of the FPGA implementation flow*
 
 ## FPGA implementation flow - batch mode
 
-**TODO
+The same implementation flow available from the GUI can be **scripted** and launched in **batch mode** to reduce the runtime.
+
+Sample Tcl scripts can be found in the `.solutions/scripts/impl` directory. Copy all scripts as follows :
+
+```
+% cp .solutions/scripts/impl/xflow.tcl   ./scripts/impl/
+% cp .solutions/scripts/impl/upload.tcl  ./scripts/impl/
+% cp .solutions/scripts/impl/flash.tcl   ./scripts/impl/
+```
+
+Explore the content of these Tcl scripts. Try to implement the `ShiftRegister` design in batch mode with :
+
+```
+% make bit
+```
 
 
 ## Compile a Phase-Locked Loop (PLL) IP core to increase the clock frequency
