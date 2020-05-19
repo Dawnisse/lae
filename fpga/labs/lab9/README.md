@@ -149,6 +149,35 @@ or simply type
 
 ## Exercise
 
+Modify the code of the parameterized N-digit BCD counter in order to introduce an additional **"end of scale" flag** `eos` asserted
+when 9999 ...9 is reached. As an example you can use the Verilog **replication operator** with the following syntax :
+
+```verilog
+// generate end-of-scale flag when 9999 ... 9 is reached
+assign eos = ( BCD == {Ndigit{4'b1001}} ) ? 1'b1 : 1'b0 ;      // use Verilog replication operator to replicate 4'1001 N times
+```
+
+Alternatively you can generate a true **"overflow" flag** `overflow` by registering in a FlipFlop the true carry-out flag of the most-significant
+BCD counter :
+
+```verilog
+// generate overflow flag
+always @(posedge clk) begin
+
+   if(rst == 1'b1) begin
+      overflow <= 1'b0 ;
+   end
+   else begin
+      overflow <= ( w[Ndigit] == 1'b1 ) ;
+   end
+end   // always
+```
+
+In required, this flag can be than used to **stop and freeze the counter** when an overflow is detected.
+
+
+## Exercise
+
 Modify the testbench in order to count **only once every 1 us** but **without changing the main 100 MHz clock frequency**.
 Create a new **"ticker" module** using an additional **modulus-N free-running counter** to generate a **single clock-pulse "tick"**
 every 1 us to be used as **count-enable** instead.
@@ -178,7 +207,7 @@ module TickCounter #(parameter integer MAX = 10414) (      // default is ~9.6 kH
       end
       else begin
 
-         count <= count + 1 ;
+         count <= count + 1'b1 ;
          tick  <= 1'b0 ;
 
       end    // if
