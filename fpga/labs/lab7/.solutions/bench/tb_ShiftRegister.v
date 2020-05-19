@@ -64,7 +64,10 @@ module tb_ShiftRegister ;
 
       #(8*100.0)
 
-      #100 $finish ;
+      #500  force clk  = 1'b0 ;  // what happens to the PLL if the input clock disappears ? 
+      #1000 release clk ;
+
+      #2000 $finish ;
    end
 
 endmodule
