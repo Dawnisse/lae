@@ -1,6 +1,6 @@
 # Lab 8 Instructions
 
-In this lab we simulate a **mixed-signal block** such as a **voltage-controlled oscillator (VCO)** using a pure-digital simulation 
+In this lab we simulate a **mixed-signal block** such as a **voltage-controlled oscillator (VCO)** using a **pure-digital simulation** 
 with **real numbers** and **SystemVerilog real ports**.
 
 
@@ -49,8 +49,8 @@ module VCO (
 
    initial begin
       clk = 1'b0 ;
-      freq = INTRINSIC_FREQ ;         // initial frequency
-      clk_delay = 1.0/(2*freq) ;      // initial semi-period
+      freq = INTRINSIC_FREQ ;             // initial frequency
+      clk_delay = 1.0/(2*freq)*1e3 ;      // initial semi-period
     end
 
 
@@ -58,6 +58,8 @@ module VCO (
    always @(Vctrl) begin
       freq = INTRINSIC_FREQ + VCO_GAIN*Vctrl ;
       clk_delay = 1.0/(2*freq)*1e3 ;
+
+      $display("VCO clock frequency for Vctrl = %.2f V is %2.2f MHz", Vctrl, freq) ;
    end
 
    // clock generator
