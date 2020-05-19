@@ -2,7 +2,7 @@
 //                               University of Torino - Department of Physics
 //                                   via Giuria 1 10125, Torino, Italy
 //-----------------------------------------------------------------------------------------------------
-// [Filename]       seven_seg_decoder.v
+// [Filename]       SevenSegmentDisplayDecoder.v
 // [Project]        Advanced Electronics Laboratory course
 // [Author]         Luca Pacher - pacher@to.infn.it
 // [Language]       Verilog 2001 [IEEE Std. 1364-2001]
@@ -13,21 +13,52 @@
 // [Revisions]      19.05.2020 - Created
 //-----------------------------------------------------------------------------------------------------
 
+//
+// Dependencies :
+//
+// n/a
+//
+
+//
+// **NOTE
+//
+// A seven-segment display is simply a colletion of seven individual coloured LEDs (called "segments")
+// in a common-anode (CA) or common-cathode (CC) configuration.
+// By turning on/off the LEDs withcproper pattern we can display all "digits" of the decimal system 0,1 ... 9
+// plus letters of the HEX systems.
+// This can be achieved by driving the LEDs with a BCD to 7-segment display DECODER, which is a pure
+// combinational block that maps a 4-bit string with BCD representation into seven LED controls.
+// 
+//       a
+//      ____
+//     |    |
+//   f |    | b
+//     | g  |
+//      ----
+//     |    |
+//   e |    | c
+//     |    |
+//      ----  o  DP
+//       d
+//
+
 
 `timescale 1ns / 100ps
 
-module seven_seg_decoder(
+module SevenSegmentDisplayDecoder (
 
-   input [3:0] BCD,
+   input  wire [3:0] BCD,     // 4-bit BCD input code
 
-   output reg segA,
+   output reg segA,           // "segments" of the display are referred to as "a", "b", "c", "d", "e", "f" and "g"
    output reg segB,
    output reg segC,
    output reg segD,
    output reg segE,
    output reg segF,
    output reg segG,
-   output reg segDP  ) ;
+   output reg segDP           // optionally, drive also the decimal point
+
+   ) ;
 
 
    // pure combinational block
@@ -52,3 +83,4 @@ module seven_seg_decoder(
    end
 
 endmodule
+

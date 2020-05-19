@@ -19,6 +19,7 @@
 //
 // bench/ClockGen.v
 // rtl/BCD_counter_Ndigit.v
+// rtl/TickCounter.v
 //
 
 
@@ -40,11 +41,23 @@ module tb_BCD_counter_Ndigit ;
 
 
 
+   ////////////////
+   //   ticker   //
+   ////////////////
+
+   // assert a single clock-pulse every 1 us i.e. 100 x 10 ns clock period at 100 MHz
+
+   wire enable ;
+
+   TickCounter  #(.MAX(100)) TickCounter_inst ( .clk(clk100), .tick(enable)) ;
+
+
+
    ///////////////////////////
    //   device under test   //
    ///////////////////////////
 
-   reg rst, enable ;
+   reg rst ;
 
    wire [3:0] BCD_0, BCD_1, BCD_2, BCD_3 ;  // each 4-bit slice of the BCD counter is a "digit" in decimal
 
@@ -55,6 +68,23 @@ module tb_BCD_counter_Ndigit ;
    //////////////////
    //   stimulus   //
    //////////////////
+
+   initial begin
+
+      #72 rst = 1'b1 ;
+
+      // release the reset
+      #515 rst = 1'b0 ;
+
+      #(1000*2157) force enable = 1'b0 ; $display("Effective number of counts from BCD counter : %d%d%d%d", BCD_3 , BCD_2 , BCD_1 , BCD_0 ) ;
+
+      #500 $finish  ;
+   end
+
+
+// **WARN: original stimulus (count clock pulses every 10 ns)
+
+/*
 
    //realtime t1, t2 ;              // **WARN: 'realtime' is 64-bit DOUBLE-precision floating point to be used with $realtime system task
    time t1, t2 ;                    // **WARN: 'time' is 64-bit UNSIGNED integer to be used with $time system task (in ps since timescale is ps)
@@ -75,6 +105,8 @@ module tb_BCD_counter_Ndigit ;
       #3000 $finish  ;
 
    end
+
+*/
 
 endmodule
 

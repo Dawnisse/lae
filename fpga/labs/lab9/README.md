@@ -152,11 +152,46 @@ or simply type
 Modify the testbench in order to count once every 1us **without changing the main 100 MHz clock frequency**.
 Create a new **"ticker" module** using an additional **free-running counter** to generate a count-enable "tick" every 1 us instead.
 
+As an example :
+
+```verilog
+`timescale 1ns / 100ps
+
+module TickCounter #(parameter integer MAX = 10414) (      // default is ~9.6 kHz as for UART baud-rate
+
+   input  wire clk,      // assume 100 MHz input clock
+   output reg  tick      // single clock-pulse output
+
+   ) ;
+
+
+   reg [31:0] count = 32'd0  ;      // **IMPORTANT: unused bits are simply DELETED by the synthesizer !
+
+   always @(posedge clk) begin
+
+      if( count == MAX-1 ) begin
+
+         count <= 32'd0 ;           // force the roll-over
+         tick  <= 1'b1 ;            // assert a single-clock pulse each time the counter resets
+
+      end
+      else begin
+
+         count <= count + 1 ;
+         tick  <= 1'b0 ;
+
+      end    // if
+   end   // always
+
+endmodule
+```
+
+
 
 ## Extra code
 
 The complete code for a 3-bit BCD counter driving a **7-segment display device** is also part of RTL solutions.
 
-Inspect the content of `.solutions/rtl/seven_seg_decoder.v` and `.solutions/rtl/Ndigit_7seg_display.v` Verilog sources and try to understand
+Inspect the content of `.solutions/rtl/SevenSegmentDisplayDecoder.v` and `.solutions/rtl/Ndigit_7seg_display.v` Verilog sources and try to understand
 the structure of the overall design.
 

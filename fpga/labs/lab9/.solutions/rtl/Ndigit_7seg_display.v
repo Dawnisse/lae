@@ -19,8 +19,9 @@
 // Dependencies:
 //
 // rtl/BCD_counter_Ndigit.v
-// rtl/seven_seg_decoder.v
+// rtl/SevenSegmentDisplayDecoder.v
 //
+
 
 `define NUMBER_OF_DIGITS 3
 
@@ -28,18 +29,18 @@
 
 module Ndigit_7seg_display (
 
-   input clk, rst, en,
+   input wire clk, rst, en,
 
-   input BTN,
-   
-   output segA,
-   output segB,
-   output segC,
-   output segD,
-   output segE,
-   output segF,
-   output segG,
-   output [2:0] seg_anode 
+   input wire BTN,
+
+   output wire segA,
+   output wire segB,
+   output wire segC,
+   output wire segD,
+   output wire segE,
+   output wire segF,
+   output wire segG,
+   output reg [2:0] seg_anode 
    
    ) ;
 
@@ -54,10 +55,10 @@ module Ndigit_7seg_display (
       count <= count + 1'b1 ;
    end
    
-   // clock divider
-   wire clk_div = count[22] ;    
-   
-   
+   // count slice fed to BCD counter
+   wire clk_div = count[22] ;             // **WARN: this is a **BAD** hardware design practice ! Use a "ticker" in real life instead !
+
+
    // control slice
    wire [1:0] count_slice ;
    assign count_slice = count[19:18] ;    // this choice determines the refresh frequency
@@ -92,11 +93,11 @@ module Ndigit_7seg_display (
    
       case( count_slice[1:0] )
    
-         2'b00   : BCD_mux <= BCD[3 :0] ;
-         2'b01   : BCD_mux <= BCD[7 :4] ;
-         2'b10   : BCD_mux <= BCD[11:8] ;
+         2'b00   : BCD_mux[3:0] <= BCD[3 :0] ;
+         2'b01   : BCD_mux[3:0] <= BCD[7 :4] ;
+         2'b10   : BCD_mux[3:0] <= BCD[11:8] ;
 
-         default : BCD_mux <= BCD[3 :0] ;
+         default : BCD_mux[3:0] <= BCD[3 :0] ;
 
       endcase
    end
@@ -125,7 +126,7 @@ module Ndigit_7seg_display (
 
    always @(*) begin   // pure combinational block
 
-      for( i = 0 ; i < `NUMBER_OF_DIGITS ; i = i+1 ) begin
+      for (i = 0 ; i < `NUMBER_OF_DIGITS ; i = i+1) begin
 
          seg_anode[i] = ( count_slice[1:0] == i ) ;
 
@@ -141,21 +142,23 @@ module Ndigit_7seg_display (
 
 
 
-   ///////////////////////////
-   //   7-segment decoder   //
-   ///////////////////////////
+   //////////////////////////////////////////
+   //   BCD to 7-segment display decoder   //
+   //////////////////////////////////////////
 
-   seven_seg_decoder  decoder (
+   wire UNCONNECTED ;
 
-      .BCD   (   BCD_mux ),
-      .segA  (      segA ),
-      .segB  (      segB ),
-      .segC  (      segC ),
-      .segD  (      segD ),
-      .segE  (      segE ),
-      .segF  (      segF ),
-      .segG  (      segG ),
-      .segDP (           )
+   SevenSegmentDisplayDecoder  SevenSegmentDisplayDecoder (
+
+      .BCD   ( BCD_mux[3:0] ),
+      .segA  (         segA ),
+      .segB  (         segB ),
+      .segC  (         segC ),
+      .segD  (         segD ),
+      .segE  (         segE ),
+      .segF  (         segF ),
+      .segG  (         segG ),
+      .segDP (  UNCONNECTED )
 
    ) ;
 

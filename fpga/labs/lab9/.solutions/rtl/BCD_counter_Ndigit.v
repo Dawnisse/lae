@@ -8,7 +8,7 @@
 // [Language]       Verilog 2001 [IEEE Std. 1364-2001]
 // [Created]        May 19, 2020
 // [Modified]       -
-// [Description]    Parameterizable N-digit BCD counter.
+// [Description]    Parameterized N-digit BCD counter.
 // [Notes]          -
 // [Version]        1.0
 // [Revisions]      19.05.2020 - Created
