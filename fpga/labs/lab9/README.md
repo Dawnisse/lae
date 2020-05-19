@@ -1,7 +1,7 @@
 # Lab 9 Instructions
 
 In this lab we design and simulate a **parameterizable N-digit Binary Coded Decimal (BCD) counter**. We also introduce the new
-`gennerate` for-loop construct to replicate a certain module or primitive an arbitrary number of times.
+`generate` for-loop construct to **replicate a certain module or primitive** an arbitrary number of times.
 
 
 As a first step, open a terminal and go inside the `lab9/` directory :
@@ -68,7 +68,7 @@ module BCD_counter_en (
             if( BCD == 4'b1001 )     // force the count roll-over at 9
                BCD <= 4'b0000 ;
             else
-               BCD <= BCD + 1 ;
+               BCD <= BCD + 1'b1 ;
          end
 
       end
@@ -95,9 +95,9 @@ module BCD_counter_Ndigit #(parameter integer Ndigit = 3) (
    ) ;
 
 
-   wire [Ndigit:0] carry ;   // roll-over flags
+   wire [Ndigit:0] w ;   // wires to inteconnect BCD counters each other
 
-   assign carry[0] = en ;
+   assign w[0] = en ;
 
    generate
 
@@ -109,9 +109,9 @@ module BCD_counter_Ndigit #(parameter integer Ndigit = 3) (
 
             .clk      (             clk ),
             .rst      (             rst ),
-            .en       (        carry[k] ),
+            .en       (            w[k] ),
             .BCD      (  BCD[4*k+3:4*k] ),
-            .carryout (      carry[k+1] )
+            .carryout (          w[k+1] )
 
          ) ;
 
@@ -132,7 +132,7 @@ Simulation sources have been already prepared for you, copy from the `.solutions
 ```
 
 
-Compile, elaborate and simulate this small design with :
+Compile, elaborate and simulate the design with :
 
 ```
 % make compile
@@ -149,8 +149,9 @@ or simply type
 
 ## Exercise
 
-Modify the testbench in order to count once every 1us **without changing the main 100 MHz clock frequency**.
-Create a new **"ticker" module** using an additional **free-running counter** to generate a count-enable "tick" every 1 us instead.
+Modify the testbench in order to count **only once every 1 us** but **without changing the main 100 MHz clock frequency**.
+Create a new **"ticker" module** using an additional **modulus-N free-running counter** to generate a **single clock-pulse "tick"**
+every 1 us to be used as **count-enable** instead.
 
 As an example :
 
@@ -186,6 +187,16 @@ module TickCounter #(parameter integer MAX = 10414) (      // default is ~9.6 kH
 endmodule
 ```
 
+<hr>
+
+**IMPORTANT**
+
+This is an example of a **good RTL coding practice** in pure synchronous digital systems design. In fact, whenever you
+need to **"slow down"** the speed of the data processing in your design you should **avoid to generate additional clocks** by means of
+counters, clock-dividers or even a dedicated clock manager.<br/>
+Generate a **single clock-pulse "tick"** to be used as **"enable"** for the data processing in your synchronous logic instead.
+
+<hr>
 
 
 ## Extra code

@@ -33,9 +33,9 @@ module BCD_counter_Ndigit #(parameter integer Ndigit = 3) (
    ) ;
 
 
-   wire [Ndigit:0] carry ;   // roll-over flags
+   wire [Ndigit:0] w ;   // wires to inteconnect BCD counters each other
 
-   assign carry[0] = en ;
+   assign w[0] = en ;
 
    generate
 
@@ -47,9 +47,9 @@ module BCD_counter_Ndigit #(parameter integer Ndigit = 3) (
 
             .clk      (             clk ),
             .rst      (             rst ),
-            .en       (        carry[k] ),
+            .en       (            w[k] ),
             .BCD      (  BCD[4*k+3:4*k] ),
-            .carryout (      carry[k+1] )
+            .carryout (          w[k+1] )
 
          ) ;
 
@@ -58,3 +58,4 @@ module BCD_counter_Ndigit #(parameter integer Ndigit = 3) (
    endgenerate
 
 endmodule
+
