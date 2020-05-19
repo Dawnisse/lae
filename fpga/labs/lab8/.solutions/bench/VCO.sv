@@ -28,26 +28,29 @@ module VCO (
    ) ;
 
    // VCO parameters
-   parameter real INTRINSIC_FREQ = 2.5 ;  // MHz
-   parameter real VCO_GAIN = 10 ;         // MHz/V
+   parameter real INTRINSIC_FREQ = 2.5 ;    // MHz
+   parameter real VCO_GAIN = 10.0 ;         // MHz/V
 
    real clk_delay ;
    real freq ;
 
    initial begin
       clk = 1'b0 ;
-      freq = INTRINSIC_FREQ ;         // initial frequency
-      clk_delay = 1.0/(2*freq) ;      // initial semi-period
-    end
+      freq = INTRINSIC_FREQ ;             // initial frequency
+      clk_delay = 1.0/(2*freq)*1e3 ;      // initial semi-period
+   end
 
 
    // change the clock frequency whenever the control voltage changes
    always @(Vctrl) begin
       freq = INTRINSIC_FREQ + VCO_GAIN*Vctrl ;
       clk_delay = 1.0/(2*freq)*1e3 ;
+
+      $display("VCO clock frequency for Vctrl = %.2f V is %2.2f MHz", Vctrl, freq) ;
    end
 
    // clock generator
    always #clk_delay clk = ~clk ;
 
 endmodule : VCO
+

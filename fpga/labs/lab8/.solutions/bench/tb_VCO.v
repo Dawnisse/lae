@@ -34,14 +34,15 @@ module tb_VCO ;
    /////////////////////////
 
    initial begin
-	#0    Vctrl = 1.25 ;
-        #3000 Vctrl = 2.00 ;
-        #3000 Vctrl = 0.50 ;
-        #3000 Vctrl = 0.78 ;
-        #3000 Vctrl = 1.25 ;
+      #0    Vctrl = 1.25 ;
+      #3000 Vctrl = 2.00 ;
+      #3000 Vctrl = 0.50 ;
+      #3000 Vctrl = 0.78 ;
+      #3000 Vctrl = 1.25 ;
+      #3000 Vctrl = 0.00 ;   // check also that clock frequency is 2.5 MHz as expected for Vctrl = 0 V
 
-        #3000 $finish ;
-     end
+      #3000 $finish ;
+   end
 
 endmodule
 
