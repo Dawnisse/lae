@@ -60,7 +60,7 @@ module LFSR (
 
       if (enable) begin
 
-         LFSR[0] <= LFSR[7] ;
+         LFSR[0] <= feedback ;
          LFSR[1] <= LFSR[0] ;
          LFSR[2] <= LFSR[1] ^ feedback ; 
          LFSR[3] <= LFSR[2] ^ feedback ;
