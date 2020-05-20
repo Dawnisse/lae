@@ -1,3 +1,6 @@
+:: turn off commands echoing
+@echo off
+
 rem #
 rem # Sample login script for Microsoft Windows command line
 rem #
@@ -5,8 +8,6 @@ rem # Luca Pacher - pacher@to.infn.it
 rem # Spring 2020
 rem #
 
-:: turn off commands echoing
-@echo off
 
 echo.
 echo Loading %USERPROFILE%\login.bat
@@ -49,7 +50,7 @@ doskey more="more.exe" $*
 
 :: a few useful aliases for ls commands
 doskey ls=ls --color $*
-doskey ll=ls -lah $*
+doskey ll=ls --color -lah $*
 
 
 rem ###################
@@ -60,7 +61,22 @@ rem ###################
 set PATH=C:\where\you\installed\WinTclTk\bin;%PATH%
 
 :: rename default executable tclsh85.exe as tclsh
-::doskey tclsh=tclsh85.exe $* 
+::doskey tclsh="tclsh85.exe" $* 
+
+
+rem #############################
+rem #   ROOT and Python setup   #
+rem #############################
+
+:: add ROOT executables to search path
+set PATH=\where\you\installed\ROOT\bin;%PATH%
+call %ROOTSYS%\bin\thisroot.bat
+
+:: add Python executable to search path
+set PATH\\where\you\installed\Python;%PATH%
+
+;; enable to load ROOT as Python module
+set PYTHONPATH=%ROOTSYS%\bin
 
 
 rem ######################################
