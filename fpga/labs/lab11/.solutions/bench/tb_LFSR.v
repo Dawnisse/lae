@@ -56,7 +56,7 @@ module tb_LFSR ;
 
       f = $fopen("bytes.txt") ;      // open the file handler
 
-      #(8*100*1000) $fclose(f) ; $finish ;   // simply run for 50 us and observe pseudo-random output bit pattern
+      #(8*100*1000) $fclose(f) ; $finish ;   // simply run for some time and observe the pseudo-random output bit pattern
    end
 
 
