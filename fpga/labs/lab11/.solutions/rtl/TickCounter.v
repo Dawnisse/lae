@@ -63,7 +63,7 @@ module TickCounter #(parameter integer MAX = 10414) (      // default is ~9.6 kH
       end
       else begin
 
-         count <= count + 1 ;
+         count <= count + 1'b1 ;
          tick  <= 1'b0 ;
 
       end    // if
