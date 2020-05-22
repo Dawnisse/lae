@@ -221,4 +221,6 @@ A more complete guide to the basic `git` commands can be found [**here**](http:/
 
 * Lecture 17</br>
 [**[Webex link]**](https://unito.webex.com/unito/j.php?MTID=m0b5d1dc9116ace3b104316e6f4a2b919)<br/>
+[**[Record link]**](https://unito.webex.com/recordingservice/sites/unito/recording/play/a5bafd58d8c4498191ee5cf47b259e86)
 
+* Lecture 18</br>
