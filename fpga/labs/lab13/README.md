@@ -90,3 +90,20 @@ or simply type
 
 Inspect the waveforms and verify the expected functionality for a FIFO memory.
 
+
+## Further readings
+
+If you are interested in more in-depth details about the Xilinx Vivado **FIFO Generator** you can refer to :
+
+* [*FIFO Generator v13.1 LogiCORE IP Product Guide*](https://www.xilinx.com/support/documentation/ip_documentation/fifo_generator/v13_1/pg057-fifo-generator.pdf)
+* [*FIFO Generator v13.2 LogiCORE IP Product Guide*](https://www.xilinx.com/support/documentation/ip_documentation/fifo_generator/v13_2/pg057-fifo-generator.pdf)
+
+
+<hr>
+
+**IMPORTANT**
+
+Since Vivado 2017.x the IP now uses version **v13.2** of the FIFO Generator instead of **v13.1** !
+
+<hr>
+

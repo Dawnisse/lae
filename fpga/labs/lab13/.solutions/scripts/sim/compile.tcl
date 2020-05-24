@@ -52,7 +52,8 @@ lappend RTL_VLOG_SOURCES $::env(XILINX_VIVADO)/data/verilog/src/glbl.v
 
 
 ## IP sources (assume to already use Verilog gate-level netlists)
-set IPS_SOURCES [glob -nocomplain ${IPS_DIR}/*/*netlist.v]
+#set IPS_SOURCES [glob -nocomplain ${IPS_DIR}/*/*netlist.v]
+set IPS_SOURCES ${IPS_DIR}/FIFO_WIDTH8_DEPTH32/sim/FIFO_WIDTH8_DEPTH32.v
 
 
 ## simulation sources (assume to write the testbench in Verilog or SystemVerilog)

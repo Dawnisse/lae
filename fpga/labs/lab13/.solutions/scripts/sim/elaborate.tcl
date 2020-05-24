@@ -72,7 +72,7 @@ if { [file exists ${LOG_DIR}/elaborate.log] } {
 puts "\n-- Elaborating the design ...\n"
 
 catch {exec xelab -relax -mt 2 \
-   -L work -L xpm -L unisims_ver -L unimacro_ver -L secureip \
+   -L work -L xpm -L unisims_ver -L unimacro_ver -L secureip -L fifo_generator_v13_2_5 \
    -debug all work.tb_${RTL_TOP_MODULE} work.glbl -snapshot tb_${RTL_TOP_MODULE} -nolog >@stdout 2>@stdout | tee ${LOG_DIR}/elaborate.log}
 
 
