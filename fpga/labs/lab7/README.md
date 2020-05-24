@@ -191,7 +191,7 @@ Launch the **Vivado IP flow** with :
 Select in the **IP Catalog** the **Clocking Wizard** available under *Cores > FPGA Features and Design > Clocking > Clocking Wizard*.
 Right click on **Clocking Wizard** and select **Customize IP...**.
 
-Create a new IP core named `PLL` with the following festures :
+Create a new IP core named `PLL` with the following features :
 
 * 100 MHz input clock
 * 200 MHz output clock
@@ -220,12 +220,12 @@ Most important files for our purposes are :
 **IMPORTANT**
 
 The  **Xilinx Core Instance (XCI)** XML file containing the configuration of the IP allows to
-easily re-compile from scartch the IP core.
+easily re-compile from scratch the IP core.
 
 <hr>
 
 
-Modify the original testbench `bench/tb_ShiftRegister.v` and instantita the newly created PLL core :
+Modify the original testbench `bench/tb_ShiftRegister.v` and instantiate the newly created PLL core :
 
 ```verilog
 
@@ -265,4 +265,10 @@ Resimulate the design :
 ```
 % make sim
 ```
+
+## Further readings
+
+If you are interested in more in-depth details about the Xilinx Vivado **Clocking Wizard**, please ref. to :
+
+* [*Clocking Wizard v6.0 LogiCORE IP Product Guide*](https://www.xilinx.com/support/documentation/ip_documentation/clk_wiz/v6_0/pg065-clk-wiz.pdf)
 
