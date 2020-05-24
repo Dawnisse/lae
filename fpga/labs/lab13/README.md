@@ -39,7 +39,7 @@ Additionally, copy from the `.solutions/` directory the following **Tcl simulati
 % cp .solutions/scripts/common/ip.tcl      ./scripts/common
 ```
 
-In order to **compile the FIFO** lauch the **Vivado IP flow** with :
+In order to **compile the FIFO** launch the **Vivado IP flow** with :
 
 ```
 % make ip
@@ -48,7 +48,7 @@ In order to **compile the FIFO** lauch the **Vivado IP flow** with :
 Select in the **IP Catalog** the **FIFO Generator** available under *Memories & Storage Elements > FIFOs > FIFO Generator*.
 Right click on **FIFO Generator** and select **Customize IP...**.
 
-Create a new IP core named `FIFO_WIDTH8_DEPTH32` with the following festures :
+Create a new IP core named `FIFO_WIDTH8_DEPTH32` with the following features :
 
 * *Common Clock Block RAM* implementation
 * 8-bit write/read width
