@@ -28,7 +28,7 @@ Create a new fresh working area :
 % make area
 ```
 
-Additionally, copy from the `.solutions/` directory the following **Tcl simulation and common scripts** :
+Additionally, copy from the `.solutions/` directory the following **Tcl simulation scripts** :
 
 
 ```
