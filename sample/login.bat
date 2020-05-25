@@ -69,11 +69,11 @@ rem #   ROOT and Python setup   #
 rem #############################
 
 :: add ROOT executables to search path
-set PATH=\where\you\installed\ROOT\bin;%PATH%
+set PATH=\where\you\installed\ROOT\5.34\bin;%PATH%
 call %ROOTSYS%\bin\thisroot.bat
 
 :: add Python executable to search path
-set PATH\\where\you\installed\Python;%PATH%
+set PATH=C:\where\you\installed\Python\2.7;%PATH%
 
 ;; enable to load ROOT as Python module
 set PYTHONPATH=%ROOTSYS%\bin
