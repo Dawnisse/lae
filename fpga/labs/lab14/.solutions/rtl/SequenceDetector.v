@@ -85,7 +85,7 @@ module SequenceDetector (
    //   next-state logic (pure sequential part)   //
    /////////////////////////////////////////////////
 
-   always @(posedge clk) begin
+   always @(posedge clk) begin      // infer a bank of FlipFlops
 
       if(reset)
          STATE <= S0 ;
@@ -107,7 +107,7 @@ module SequenceDetector (
 
       case ( STATE )
 
-         default : S0 ;   // catch-all
+         default : STATE_NEXT = S0 ;   // **IMPORTANT ! Use a "catch-all" condition to cover all remaining codes, LATCHES inferred otherwise !
 
          S0 : begin
 
