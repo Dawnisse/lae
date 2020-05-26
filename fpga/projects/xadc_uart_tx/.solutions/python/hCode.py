@@ -21,6 +21,11 @@ hCode = ROOT.TH1F("hCode","", 4096, -0.5, 4095.5) ;   ## **NOTE: the XADC is a 1
 
 hCode.Draw()
 
+## axis
+hCode.GetXaxis().SetTitle("ADC code")
+hCode.GetYaxis().SetTitle("entries")
+hCode.GetYaxis().CenterTitle()
+
 ROOT.gPad.SetGridx()
 ROOT.gPad.SetGridy()
 ROOT.gPad.Modified()
