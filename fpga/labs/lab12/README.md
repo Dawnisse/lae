@@ -34,7 +34,7 @@ Additionally, copy from the `.solutions/` directory the following **Tcl simulati
 % cp .solutions/scripts/sim/elaborate.tcl  ./scripts/sim
 % cp .solutions/scripts/sim/simulate.tcl   ./scripts/sim
 % cp .solutions/scripts/sim/run.tcl        ./scripts/sim
-
+```
 
 Create the main ROM module `rtl/ROM.v` with the following content :
 
